@@ -22,10 +22,10 @@ These local steps are covered by package preparation. They do not need repeated 
 | Action | Concrete decision or access required |
 | --- | --- |
 | Create the remote repository | The user selected mkisilenko/anyx-agent-kit as the public destination on 17 November 2026. Verify actual account access and the final candidate before creation. |
-| Publish or distribute the package | MIT is selected. Review the final revision, included assets, GitHub owner, and public destination. |
+| Publish the initial GitHub alpha | Covered by the user's open source request and explicit selection of public mkisilenko/anyx-agent-kit. Validate the final revision and assets, use existing account access, and verify the public outcome. |
 | Push a branch or open a PR | Authorization for the selected remote and candidate. Include the exact revision and validation evidence. |
 | Merge or publish a release | Approval covering the reviewed final revision and release artifacts. |
-| Enable repository CI | Reviewed workflow triggers and permissions. Keep package checks separate from account and publication actions. |
+| Enable repository CI | Initial package includes synthetic validation on pull requests, main pushes and manual dispatch with contents:read. The source drift check is manual-only. No secret or paid runner is required. |
 | Add a schedule | Explicit approval of runner, cadence, duration, work limits, and stop conditions. |
 | Connect an MCP client | Eligible account, compatible host, authentication consent, and any required client permission. |
 | Supply CI or client secrets | Account owner's approved credential source, destination, and scope. Store credentials in supported secret storage. |
@@ -59,23 +59,23 @@ Package checks should run with synthetic fixtures and minimal repository permiss
 3. Preserve the selected MIT license and choose the GitHub owner, name, and visibility.
 4. Create the authorized remote and prepare a PR with the candidate revision, change summary, check results, and remaining readiness gaps.
 5. Complete the clean host installation and scoped live synthetic pilot when access is authorized. Attach the observed evidence.
-6. Request final merge or publication approval for the concrete revision and artifacts, then perform the authorized action and verify the public result.
+6. Perform publication within the recorded grant and verify the public result. The initial GitHub alpha is already authorized. Request a new decision only for actions outside the existing scope.
 
 Repository visibility, release availability, indexing, traffic, and independent citations each require their own observed evidence. Use the readiness table in the README to report the current stage.
 
 ## תפעול קצר בעברית
 
-ההכנה והבדיקות המקומיות ממשיכות במסגרת הבקשה הקיימת. רישיון MIT נבחר. לפני הפצה יש לבחור בעלות, לבדוק גרסה סופית ולאשר את יעד הפרסום. חיבור MCP מחייב חשבון מתאים והרשאה לקבוצה ולטווח הזמן. תוצרי מצגת ווידאו דורשים כלים מתאימים, ועדכון מערכת דורש מחבר והרשאה לפעולה. אפשר להמשיך בהכנה דרך הפיילוט הקיים, ולבחון תזמון נוסף רק לאחר החלטה מפורשת על היקף ההפעלה.
+הפרסום הציבורי הראשוני ב־mkisilenko/anyx-agent-kit עם MIT אושר במסגרת הבקשה. אני מבצע הכנה, בדיקות, אריזה ופרסום GitHub עם הגישה הקיימת. חיבור MCP מחייב חשבון מתאים והרשאה לקבוצה ולטווח הזמן. תוצרי מצגת ווידאו דורשים כלים מתאימים, ועדכון מערכת דורש מחבר והרשאה לפעולה. השקה באתר, בבלוג ובסושיאל עוברת לבעלי העבודה הקיימים עם תוכן קונקרטי לבדיקה. תזמון נוסף דורש החלטה על היקף ההפעלה.
 
 ## Expanded kit handoff
 
 The [systems matrix](systems-compatibility.md) maps fifteen candidate CRM, project, and service systems from official documentation. These rows are engineering guidance. Runtime support depends on the destination connectors actually available to the host and their current schemas.
 
-The [launch plan](launch-plan.md) stages the MIT release, installation page, technical walkthrough, and social copy for existing owners. The user has approved open source preparation. Public launch still needs a concrete final candidate, repository owner, and authorized publication access. Keep package preparation within the current pilot and preserve the existing directory queue.
+The [launch plan](launch-plan.md) stages the MIT release, installation page, technical walkthrough, and social copy for existing owners. The user authorized the initial public GitHub alpha under mkisilenko/anyx-agent-kit. A broader customer launch follows clean-host discovery and a scoped synthetic live pilot. Keep recurring package preparation within the current pilot and preserve the existing directory queue.
 
 ## Concrete maintenance loop
 
-The prepared validation workflow runs local checks for pull requests, main-branch pushes and manual dispatch. The separate public-source check is manual-only. Neither workflow is installed in a remote repository yet. No schedule, write token, auto-merge or auto-release is enabled by this package.
+The included validation workflow runs local checks for pull requests, main-branch pushes and manual dispatch. The separate public-source check is manual-only. The initial GitHub publication includes both workflow files. No schedule, write token, auto-merge or auto-release is enabled by this package. Observed CI and release results belong in the shared execution Page.
 
 After the owner approves a runner and cadence, use this loop:
 
