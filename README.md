@@ -2,11 +2,11 @@
 
 <img src="assets/brand/anyx-logo.png" width="96" height="96" alt="Anyx logo">
 
-**TLDR:** Eight MIT-licensed skills turn authorized WhatsApp group context into briefings, reviews, project artifacts, and controlled workspace changes. This is an alpha toolkit. Local rendering is exercised, while live MCP and destination integrations need a scoped pilot. Connect an eligible Anyx account and install the skills before trying a scoped workflow.
+**TLDR:** Eight MIT-licensed skills turn authorized WhatsApp group context into briefings, reviews, project artifacts, and controlled workspace changes. This is an alpha toolkit. Local rendering and an authorized text-read pilot on one existing host are verified; clean installation and destination writes remain untested. Connect an eligible Anyx account and install the skills before trying a scoped workflow.
 
 [Anyx](https://anyx.app) connects the group context to a compatible agent through its authenticated MCP service. The kit adds workflow instructions and synthetic examples. The existing [Anyx documentation repository](https://github.com/mkisilenko/docs) remains the canonical source for connection and tool documentation.
 
-Version `0.1.0-alpha.3` integrates reviewed input-validation, authorization-reference, evidence-cutoff, independent-batch, print-geometry and video-pacing fixes while preserving the original [Anyx brand](BRANDING.md). The video helper uses text-based scene timing with a configurable 180-second default limit; it preserves conditions and rejects an insufficient explicit limit instead of truncating facts. See [validation evidence](docs/validation.md) for current checks and the separate history of earlier renders.
+Version `0.1.0-alpha.3` is prepared locally and integrates reviewed input-validation, authorization-reference, evidence-cutoff, independent-batch, print-geometry and video-pacing fixes while preserving the original [Anyx brand](BRANDING.md). The video helper uses text-based scene timing with a configurable 180-second default limit; it preserves conditions and rejects an insufficient explicit limit instead of truncating facts. See [validation evidence](docs/validation.md) for current checks and the separate history of earlier renders.
 
 ## Choose a workflow
 
@@ -90,10 +90,10 @@ These checks validate package structure, fixtures, and build behavior. Record th
 
 | Readiness stage | Current evidence |
 | --- | --- |
-| Locally validated | All 8 portable skills and 63 local tests passed, including actual Chrome/PDF geometry and forced-hang cleanup. Fresh alpha.3 dashboard/deck and a 124-second local MP4 were inspected. Earlier independent synthetic workflow cases remain separately documented. See [validation](docs/validation.md). |
+| Locally validated | All 8 portable skills and 69 local tests passed, including actual Chrome/PDF geometry and forced-hang cleanup. Fresh alpha.3 dashboard/deck and a 124-second local MP4 were inspected. Earlier independent synthetic workflow cases remain separately documented. See [validation](docs/validation.md). |
 | Clean host installed | Unverified. Record host version, installed skill, and discovery result. |
-| Live MCP synthetic pilot | Unverified. Use an explicitly scoped demo group and synthetic messages. |
-| Public repository | Selected public destination: [mkisilenko/anyx-agent-kit](https://github.com/mkisilenko/anyx-agent-kit). MIT is selected. Release availability is recorded separately. |
+| Live MCP read pilots | A bounded synthetic read passed. A separate authorized text-read pilot was verified on one existing host, with details private. A legacy long-text read remained partial; live chunk recovery was not exercised. Clean installation and destination writes remain untested. |
+| Public repository and release | [mkisilenko/anyx-agent-kit](https://github.com/mkisilenko/anyx-agent-kit) is public with MIT and the alpha.2 release. Alpha.3 is prepared locally and remains unpublished. |
 | Traffic and citations | Unmeasured. Record visits, useful usage, and independent references separately. |
 
 ## Release handoff

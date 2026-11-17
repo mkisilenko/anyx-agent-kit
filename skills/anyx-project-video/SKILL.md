@@ -25,6 +25,8 @@ Create a UTF-8 JSON brief following the bundled `examples/demo-brief.json` forma
 - `summary`: objects with `text` and `source_ids`; `actions`: objects with `id`, `title`, `owner`, `status`, `due`, `source_ids`; `decisions`: objects with `id`, `text`, `status`, `source_ids`; `risks`: objects with `text`, `status`, `source_ids`.
 - `sources`: unique objects with `id`, `system`, `timestamp`, `label`, `url`, and available `group_id` and `record_id`. Use real URLs or `null`.
 
+Actions use `title` as the canonical text. An optional `text` alias is accepted only when it exactly equals `title`; a conflicting or null alias is an input error. The complete JSON brief, including metadata and keys, must encode as strict UTF-8. Valid Hebrew and emoji are preserved.
+
 The optional `summary`, `actions`, `decisions`, `risks` and `sources` arrays may be omitted and normalize to empty arrays. Explicit `null`, wrong container types or malformed rows are errors. Omitted action/decision/risk status becomes `unknown`; omitted action owner and due become `null`. These defaults mean unavailable facts, not verified absence.
 
 `project.data_as_of` is the evidence cutoff, not the artifact generation time. All timestamps used for bounds and known due values need an explicit UTC offset. The cutoff must be at or after `period.start`. Known source timestamps must be at or before that cutoff. Older supporting sources may precede the requested window; an unavailable timestamp stays unknown rather than invented. When it is before the requested `period.end`, coverage must be `partial`; explain the unobserved tail in `coverage.note`, keep the requested window visible and draw no conclusion about events after the cutoff. A cutoff at or beyond the end still does not establish complete capture.
@@ -62,7 +64,7 @@ Use the bundled original [Anyx logo](assets/brand/anyx-logo.png) in the artifact
 
 The helper allocates each scene time from its visible label, headline, captions, brand and footer, using a minimum of four seconds and a heuristic budget of 20 normalized Unicode codepoints per second. It preserves every supplied row, condition, status, deadline, source marker and coverage note. The default total limit is 180 seconds; use `--max-duration-seconds 60` only when the user needs a one-minute composition. If the chosen limit is too short, the helper fails before creating output instead of truncating facts. Review or split the brief with the user if needed. This budget is a pacing aid; it does not establish human readability or replace video inspection.
 
-The bundled MP4 documents an earlier fixed-duration renderer. Rebuilding its brief with the revised text budget changes its duration; the old MP4 is not evidence that this candidate's new timeline has been rendered or visually checked.
+The repository's bundled synthetic MP4 is a 124-second render produced with the current text-based timeline; all ten scene-midpoint frames were inspected. This evidence covers that particular brief and runtime. Every new brief still requires its own rendering and inspection.
 
 ## Verify and deliver the actual output
 

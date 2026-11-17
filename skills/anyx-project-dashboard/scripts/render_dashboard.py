@@ -1,9 +1,10 @@
 """Render a source-backed local dashboard. No network, publication or live connection."""
 import argparse
 import hashlib
-from brief_support import run_cli, brand_logo, disclosures, h, read_brief, refs, save_text, source_list, source_registry, status_label, ui
+from brief_support import validate_brief, run_cli, brand_logo, disclosures, h, read_brief, refs, save_text, source_list, source_registry, status_label, ui
 
 def render(data):
+    data = validate_brief(data)
     project = data["project"]
     cards = "".join(f'<article><h2>{h(x["text"])}</h2><p>{refs(x)}</p></article>' for x in data["summary"])
     rows = "".join(f'<tr data-status="{h(x.get("status") or "unknown")}"><td>{h(x["id"])}</td><td>{h(x["title"])}</td>'

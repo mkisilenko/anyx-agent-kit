@@ -1,10 +1,12 @@
 # Validation evidence
 
-**TLDR:** Alpha.3 passes 63 local tests and eight portable skill checks. A fresh 124-second MP4 uses the revised text timeline, original logo and clarified synthetic group scope; ten scene-midpoint frames were inspected. Real Chrome checks cover PDF geometry and desktop/mobile artifacts. Live MCP evidence is a separate pilot record.
+**TLDR:** Alpha.3 passes 69 local tests and eight portable skill checks. A fresh 124-second MP4 uses the revised text timeline, original logo and clarified synthetic group scope; ten scene-midpoint frames were inspected. Real Chrome checks cover PDF geometry and desktop/mobile artifacts. An authorized text-read pilot is verified on one existing host, with details private; live chunk recovery, clean installation and destination writes remain untested.
 
-Reviewed on 17 November 2026, Asia/Jerusalem. All conversations, projects, external records and media demos are synthetic.
+Reviewed on 17 November 2026, Asia/Jerusalem. All shipped conversations, projects, external records and media demos are synthetic. Separate live-read evidence is summarized below without group identities or customer content.
 
 
+
+Alpha.3 is prepared locally; the current public release is alpha.2. These checks do not establish publication of the prepared revision.
 
 ## Current alpha.3 integration checks
 
@@ -12,8 +14,9 @@ This local revision integrates the independent review fixes onto branded source 
 
 | Layer | Observed result |
 | --- | --- |
-| Automated suite | 63 tests passed without skips: the 36 alpha.2 cases plus 27 new regressions. The original replay scenarios were not edited. |
+| Automated suite | 69 tests passed without skips: the 63 integrated alpha.3 cases plus six residual-review regressions. The original replay scenarios were not edited. |
 | Input and time bounds | Malformed containers, rows and excessively nested JSON produce clean errors. Missing optional arrays normalize consistently. Evidence cutoff cannot precede the window start; known source timestamps cannot exceed it. A requested end after cutoff requires partial coverage. |
+| Canonical action text and UTF-8 | Actions always render their validated title. Null/conflicting text aliases fail cleanly; an identical alias is accepted with identical output. The complete JSON, including nested metadata and keys, must encode as strict UTF-8 before any artifact API creates output. Actual CLI/API tests verify no partial output for lone high/low surrogates and preserve Hebrew plus literal/escaped paired emoji. |
 | Sync structure | Approved state requires an authorization reference in either mode. Exact identifier, business-key, receipt and ledger-reference types and SHA-256 base format are checked. Validation still performs zero remote writes and does not authenticate grants or receipts. |
 | Independent batches | The full ledger retains unknown outcomes. A separate independent execute batch preserves operation IDs, keys, bases and provenance; unresolved or unverified dependencies remain blocked. Live freshness and reconciliation remain executor responsibilities. |
 | Video pacing | Visible text, including repeated brand/footer, receives a heuristic 20 Unicode codepoints per second with a four-second minimum. Default total limit is 180 seconds; an explicit 60-second limit rejects the 124-second demo before creating output. Rows, statuses, owners, deadlines, conditions and source markers are retained. |
@@ -25,7 +28,24 @@ This local revision integrates the independent review fixes onto branded source 
 
 The shipped demonstration is a synthetic group briefing: J42 decisions and scope are separate from J21/J22/J25 materials. Its three portable skill copies share that clarified example. Independent replay fixtures retain their separate scenario contexts. No live group identity, customer content, credentials or private pilot result was copied into public code or examples.
 
-These automated and rendering checks are local. The browser check explicitly skips on a machine without its existing Node/Chrome/puppeteer-core/pypdf dependencies; it actually executed in this run. The pacing budget aids review and does not prove human reading speed. Sampling ten video frames is narrower than checking every frame. Native live MCP, clean-host discovery and destination writes require their own evidence; the local validator cannot establish them.
+These automated and rendering checks are local. The browser check explicitly skips on a machine without its existing Node/Chrome/puppeteer-core/pypdf dependencies; it actually executed in this run. The pacing budget aids review and does not prove human reading speed. Sampling ten video frames is narrower than checking every frame. The local validator cannot establish live access, fresh remote state or write authority. The separately observed text-read pilot below covers one existing host; clean-host discovery, live chunk recovery and destination writes remain untested.
+
+
+## Scoped live-read evidence
+
+A bounded live read of synthetic messages passed through the core tools. A separate legacy long-text attempt returned a truncation marker without an available imported recovery tool/reference, so that field remained incomplete and coverage stayed partial.
+
+An authorized text-read pilot was also verified on one existing host: frozen pagination, reverse rescan, direct lookup and search were checked for consistency over the retrieved records. Text was inline, so long-text chunk recovery was not exercised. Private sourced dashboard, deck and video artifacts were produced and inspected. Their records and artifacts are kept private and were not copied into the public examples. These checks do not establish complete WhatsApp capture, compatibility with every host, clean installation or destination writes.
+
+## Historical test scopes
+
+| Earlier scope | Recorded result |
+| --- | --- |
+| Isolated pre-branding review candidate | 53 tests passed in that separate candidate; this was not the branded integration or a live MCP test. |
+| Alpha.2 branding baseline | 36 tests passed, described below. |
+| Integrated alpha.3 source `5d6abe95744ceaef648d691f1442d1ea340ec051` | 63 tests passed before the six canonical-alias/Unicode residual tests were added. |
+
+These are separate snapshots. The current result is 69, rather than their sum.
 
 ## Historical alpha.2 branding checks
 
@@ -63,7 +83,7 @@ The video runtime used Node 22.17.0, Hyperframes 0.9.61, Chrome and private FFmp
 
 Hyperframes lint reported zero errors and 11 nonblocking editor-structure warnings. These recommend more sub-compositions for editing. The render used strict errors and no best-effort capture fallback. Every new real brief still needs its own visual inspection.
 
-## Behavioral checks
+## Historical synthetic workflow checks
 
 Catch-up completed pages and three UTF-8 chunks, retaining the difference between a reported reassignment and an accepted commitment. Materials kept corrections, cancellations, exact units and missing fields. Decision log preserved conditional and withdrawn approvals.
 
@@ -73,7 +93,7 @@ The five cases used 26 simulated Anyx calls. No live Anyx account or customer re
 
 ## Remaining verification
 
-- Clean-host skill discovery, live MCP authentication and an authorized synthetic group pilot.
+- Clean-host skill discovery and coverage of additional hosts/accounts. Existing-host text reads are verified within the scope above; live long-text chunk recovery is not yet tested.
 - Actual destination connections. The 15 systems in systems-compatibility.md are API/mapping candidates, not fifteen implemented authenticated integrations.
 - Native presentation formats. The portable helper creates HTML slides; other formats require a real host backend.
 - Fresh remote versions and user authority. The sync helper validates plan structure and performs no remote writes.
@@ -82,7 +102,7 @@ The five cases used 26 simulated Anyx calls. No live Anyx account or customer re
 
 ## Reproduce
 
-Run `python tools/validate_kit.py`, `python -m unittest discover -s tests` and `python tools/build_skill_zips.py`. The generated manifest records per-artifact SHA-256 values. Archives normalize text line endings and exclude private validation state and runtime dependencies.
+Run `python tools/validate_kit.py`, `python -B -m unittest discover -s tests` and `python tools/build_skill_zips.py`. The generated manifest records per-artifact SHA-256 values. Archives normalize text line endings and exclude private validation state and runtime dependencies.
 
 Optional `python tools/check_upstream.py --check` reads bounded public sources and never rewrites instructions. Original test traces remain in ignored .validation folders. Public examples are labeled synthetic.
 

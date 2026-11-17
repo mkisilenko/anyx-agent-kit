@@ -142,6 +142,15 @@ def validate_brief(data):
     data_as_of is the evidence cutoff, not a promise of capture completeness.
     A requested window extending beyond that cutoff must be explicitly partial.
     """
+    # Validate the complete JSON value, including unknown metadata and keys,
+    # before any renderer can create a file or output directory.
+    try:
+        json.dumps(data, ensure_ascii=False).encode("utf-8", errors="strict")
+    except UnicodeEncodeError:
+        raise ValueError("Brief must contain valid UTF-8 text; unpaired Unicode surrogates are invalid") from None
+    except (TypeError, ValueError, RecursionError):
+        raise ValueError("Brief must be JSON-serializable") from None
+
     def object_value(value, field):
         if not isinstance(value, dict):
             raise ValueError(f"{field} must be a JSON object")
@@ -212,6 +221,8 @@ def validate_brief(data):
             text = row.get("title" if section == "actions" else "text")
             if not isinstance(text, str) or not text.strip() or len(text) > 280:
                 raise ValueError(f"{section} text must be 1..280 characters")
+            if section == "actions" and "text" in row and row["text"] != text:
+                raise ValueError("actions.title is canonical; an optional text alias must exactly match title")
             refs = row.get("source_ids")
             if not isinstance(refs, list) or not refs or any(not isinstance(ref, str) or ref not in known_ids for ref in refs):
                 raise ValueError("Every factual row needs a list of resolvable source_ids")

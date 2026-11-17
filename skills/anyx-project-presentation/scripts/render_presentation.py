@@ -1,15 +1,16 @@
 """Render an offline HTML slide deck. This helper does not create a PPTX."""
 import argparse
-from brief_support import brand_logo, disclosures, h, item_details, read_brief, run_cli, save_text, source_markup, source_registry, ui
+from brief_support import validate_brief, brand_logo, disclosures, h, item_details, read_brief, run_cli, save_text, source_markup, source_registry, ui
 
 def render(data):
+    data = validate_brief(data)
     project=data["project"]
     pages=[(project["title"],f'<p class="intro"><bdi>{h(project["id"])}</bdi></p><p>{h(disclosures(data))}</p><p>{h(ui(data,"Data as of"))} <bdi>{h(project["data_as_of"])}</bdi></p>')]
     for section,label in [("summary","Project summary"),("decisions","Decisions"),("actions","Actions"),("risks","Risks and missing checks")]:
         entries=[]
         characters=0
         for row in data[section]:
-            title=row.get("text",row.get("title",""))
+            title=row["title"] if section=="actions" else row["text"]
             detail=item_details(data,row,action=section=="actions")
             markers=" ".join("["+source_id+"]" for source_id in row["source_ids"])
             size=len(title)+len(detail)+len(markers)

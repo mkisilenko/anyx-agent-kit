@@ -25,6 +25,8 @@ Create a UTF-8 JSON brief compatible with the bundled `examples/demo-brief.json`
 - `summary`: `{text, source_ids}` objects; `actions`: `{id, title, owner, status, due, source_ids}` objects; `decisions`: `{id, text, status, source_ids}` objects; `risks`: `{text, status, source_ids}` objects.
 - `sources`: unique `{id, system, timestamp, label, url}` records, retaining available `group_id` and `record_id`. A missing URL is `null`; do not fabricate a chat link.
 
+Actions use `title` as the canonical text. An optional `text` alias is accepted only when it exactly equals `title`; a conflicting or null alias is an input error. The complete JSON brief, including metadata and keys, must encode as strict UTF-8. Valid Hebrew and emoji are preserved.
+
 The optional `summary`, `actions`, `decisions`, `risks` and `sources` arrays may be omitted and normalize to empty arrays. Explicit `null`, wrong container types or malformed rows are errors. Omitted action/decision/risk status becomes `unknown`; omitted action owner and due become `null`. These defaults mean unavailable facts, not verified absence.
 
 `project.data_as_of` is the evidence cutoff, not the artifact generation time. All timestamps used for bounds and known due values need an explicit UTC offset. The cutoff must be at or after `period.start`. Known source timestamps must be at or before that cutoff. Older supporting sources may precede the requested window; an unavailable timestamp stays unknown rather than invented. When it is before the requested `period.end`, coverage must be `partial`; explain the unobserved tail in `coverage.note`, keep the requested window visible and draw no conclusion about events after the cutoff. A cutoff at or beyond the end still does not establish complete capture.

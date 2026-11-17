@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
-from brief_support import brand_logo, disclosures, h, item_details, read_brief, run_cli, ui
+from brief_support import validate_brief, brand_logo, disclosures, h, item_details, read_brief, run_cli, ui
 
 READING_CHARACTERS_PER_SECOND = 20
 MINIMUM_SCENE_SECONDS = 4
@@ -55,6 +55,7 @@ def append_scenes(scenes, label, headline, lines):
         scenes.append((label, headline, page))
 
 def build(data, output, max_duration_seconds=DEFAULT_MAXIMUM_VIDEO_SECONDS):
+    data = validate_brief(data)
     output=Path(output)
     if output.exists():
         raise ValueError("Choose a new output directory; existing output is not overwritten")
@@ -64,7 +65,7 @@ def build(data, output, max_duration_seconds=DEFAULT_MAXIMUM_VIDEO_SECONDS):
     for key,label in [("summary","Current picture"),("decisions","Decisions and conditions"),("actions","Actions for review"),("risks","Risks and missing checks")]:
         lines=[]
         for item in data[key]:
-            text=item.get("text",item.get("title",""))
+            text=item["title"] if key=="actions" else item["text"]
             detail=item_details(data,item,action=key=="actions")
             markers=" ".join("["+source_id+"]" for source_id in item["source_ids"])
             line=(detail+" · " if detail else "")+text+" "+markers

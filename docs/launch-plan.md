@@ -1,87 +1,78 @@
 # Anyx Agent Kit launch plan
 
-**TLDR:** Prepare one reviewed MIT release, verify a clean installation and a synthetic pilot, then distribute through the Anyx site and existing content owners. The user selected mkisilenko/anyx-agent-kit as the public repository and MIT as the license. Public alpha availability is separate from a general customer launch.
+**TLDR:** Prove two useful workflows in a closed pilot, open a limited release to 3–5 users, then distribute through the existing site, blog and social owners. Use one existing article and two derivatives. The gates below are proposed learning targets, not measured results.
 
-## Release candidate
+## Current boundary
 
-The expanded candidate contains eight workflow folders: `anyx-team-catchup`, `anyx-materials-review`, `anyx-decision-log`, `anyx-project-dashboard`, `anyx-project-presentation`, `anyx-project-video`, `anyx-project-control`, and `anyx-workspace-sync`.
+The eight-skill MIT kit uses the existing Anyx MCP service. The [Anyx documentation repository](https://github.com/mkisilenko/docs), [MCP quickstart](https://docs.anyx.app/developers/mcp-quickstart) and [tool reference](https://docs.anyx.app/developers/mcp-tools) remain the connection and API sources.
 
-MIT is the selected license and is included in `LICENSE`. The existing [mkisilenko/docs](https://github.com/mkisilenko/docs) repository remains canonical for Anyx API and MCP documentation. The kit packages workflows, examples, and evaluation material around that source.
+An authorized live text-read pilot completed on one existing host, with outputs retained privately. This does not establish clean-host installation, support across clients or external destination writes. Private content, identities and outputs are excluded from public launch assets.
 
-## Phase 1 Prepare and review the release
+Version `0.1.0-alpha.3` is locally prepared pending final review and matching release scope. Do not describe it as published. Record its final revision, checks, package hashes and observed release availability separately. Public alpha availability and a broader customer launch are separate outcomes.
 
-| Staging task | Acceptance evidence | Owner or execution gate |
+## Two practical starting uses
+
+1. **Project catch-up:** What changed, what was approved or withdrawn, and who actually accepted a next step? Return a short briefing and decision log with sources and coverage limits.
+2. **Materials review:** What items and units were requested, what was corrected, and what is missing before a supplier inquiry? Use this workflow only when the selected context contains a real materials request. An empty applicable result is valid.
+
+A useful output answers the selected question, preserves missing information and passes a source check. A request or agent suggestion must not become a human commitment. Reported work remains distinct from independently verified execution.
+
+## Three stages
+
+These are proposed learning windows, not new schedules. Advance on evidence rather than a calendar deadline.
+
+| Stage | Audience and asset | Owner and intended result | Proposed learning gate | Proof | Stop criteria |
+| --- | --- | --- | --- | --- | --- |
+| **1. Closed pilot** | Internal operator and independent checker. Corrected package, installation guide and the two workflows above. | Pilot coordinator and repository owner establish a reproducible source-to-output path. | One clean compatible host; two scoped workflow attempts and one repeat of a saved request; no critical semantic errors. | Revision/package hash, host/version, discovery, reference loading, authenticated scoped read, completed pagination, source checks and inspected output. Retain private evidence locally. | Any critical semantic error; the same installation blocker observed twice; access or coverage insufficient to answer. Resolve before widening the pilot. |
+| **2. Limited release** | 3–5 suitable operations users. Reuse the guide and reviewed assets. | Existing pilot owner tests useful first use and repeat use. Invitations need an applicable existing grant and channel. | Target three useful first outputs among up to five actual starters, each with at most one help intervention. At least two users repeat within seven days of their first useful output. | One row per starter: package/host, first-use result, help count, repeat, blocker and private evidence reference. User confirms usefulness. | Any critical semantic error or the same install blocker twice. Missed first-use/repeat targets trigger a workflow or guide improvement before wider distribution. |
+| **3. Public launch** | International operations and field-service teams using WhatsApp. Existing article, site section and one social message. | Existing blog, site and social owners publish through their current processes after earlier gates and release verification. | Working guide/download links, evidence-backed wording and observed activation. Review the first 14 days as a learning window. | Public URLs, release/download checks, available attribution and separate first-use/repeat receipts. | After 20 measured unique guide visitors and zero verified activations, pause further distribution and debug the funnel. Missing activation measurement is UNKNOWN, not zero. Critical semantic errors or misleading claims stop promotion immediately. |
+
+An **actual starter** begins installation or first use. An invitation or page visit is not a start. Report `3/5` only when five started; report `3/3` when three started. Fewer than three starters is insufficient evidence for this small-cohort gate, not a product failure. A help intervention is direct operator assistance beyond the guide, counted consistently. Repeat means a new useful request chosen by the user, not a coordinator replay.
+
+## Receipts before marketing claims
+
+| Claim | Minimum evidence and limit |
+| --- | --- |
+| Installed and usable | Final package revision/hash, exact host/version, clean installation, discovery, reference loading and invocation. One host does not establish cross-client support. |
+| Read through a live connection | Authenticated status, selected scope/time, returned source identifiers, page completion, text recovery when needed and capture limits. Publish no private records. |
+| Produced a useful artifact | Check material claims, approvals, withdrawals, accepted owners, units and missing data against sources. Inspect the generated artifact and retain its hash. A composition is not an MP4; an HTML deck is not native slide output. |
+| Demonstrated publicly | Use existing illustrative assets or separately approved publishable evidence. Label illustrative demos. Private live-pilot output is not automatically shareable. |
+| Updated a destination | Actual connector/account and record mapping, matching authorization, current before-values/version, operation receipt and read-back. This remains open. The sync validator performs no remote writes. |
+| Improved outcomes | Observed usage and a defined measurement method. A successful read or render does not prove ROI, time saved, conversion or LLM recommendation preference. |
+
+Live-demo wording must name the tested host and scope. The [systems matrix](systems-compatibility.md) documents API/auth candidates, not fifteen native integrations.
+
+## One source and two derivatives
+
+| Allocation | Existing asset and audience | Channel owner | Acceptance evidence |
+| --- | --- | --- | --- |
+| **Weekly source** | [Supplier inquiry article](https://anyx.app/blog/whatsapp-mcp-materials-supplier-inquiry), with an approved installation route and clearly labeled demonstration. For operations users assessing a concrete need. | Existing blog owner incorporates material into the current queue. No duplicate article. | Accurate claims, visible prerequisites, exact available release link and checked route to installation. |
+| **Derivative 1** | Existing website section, installation CTA and selected reviewed demo. | Existing Anyx site owner adapts, reviews and deploys. | Desktop/mobile checks, working guide/download links and account/host prerequisites. |
+| **Derivative 2** | One existing EN or HE social message with the reviewed visual or video and guide link. | Existing social owner selects the slot. | Public post URL after publication, correct demo label and available attribution. A separate language or video post is another derivative. |
+| **Derivative 3** | Unallocated. | Existing content coordinator retains the slot. | No additional asset, outreach or schedule created by this plan. |
+
+If the launch week's allocation is occupied, reuse that allocation or hold this item. Owners share the same cap. Reuse the existing deck, dashboard, video, visual and EN/HE drafts; no new marketing pack is requested.
+
+Near one click repeat use follows account eligibility, connected groups, authenticated compatible MCP support, installed skills and initial group/time choice. Rendering and destination changes require their actual available tools. Keep these prerequisites near the relevant CTA.
+
+## Separate measurements and operating limits
+
+| Measure | Record | If unobserved |
 | --- | --- | --- |
-| Complete all eight skill folders and their references | Validator, unit-test, behavioral, and ZIP manifest results for the final revision | Local package preparation |
-| Install in one clean compatible host | Host/version, discovery result, referenced-file loading, and invocation evidence | Approved test host access |
-| Run a synthetic Anyx MCP pilot | Scoped demo group/time, evidence-based output, and documented coverage limits | Eligible account, authenticated host, and demo scope |
-| Exercise one destination or renderer route | Actual available tools, synthetic target, observed artifact or approved write result | Destination access and operation scope |
-| Review release contents | No secrets or private group content, MIT file, checksums, and known gaps | Final candidate review |
-| GitHub destination | Public mkisilenko/anyx-agent-kit selected by the user | Decision recorded |
-| Create a reviewable branch or PR and release draft | Exact revision, artifacts, install instructions, and validation evidence | Authorized remote scope |
+| Installation | Actual starters, package/host, discovery, help interventions and blockers | UNKNOWN. Existing-host discovery is not a clean install. |
+| First useful output | Successful first uses / actual starters, with source and semantic checks | UNKNOWN without a checked output. Downloads are not activation. |
+| Repeat | Distinct users completing another useful request within seven days | UNKNOWN without a second-use receipt. |
+| Attribution | Existing channel/source tag, measured unique guide visitors and attributable activations | UNKNOWN when the measurement cannot connect steps. Do not invent a conversion rate. |
+| Visibility | Public availability, indexing, independent references and referral traffic | Record separately. Owned distribution does not establish earned citations or LLM preference. |
 
-Use the documented folder route or host import route to test local installation. Add the actual repository and release URLs only after they exist. Generic skills can be discovered through the actual host's supported skill mechanisms. ChatGPT plugin packaging or a marketplace listing would be a separate reviewed distribution path.
+Preserve the existing directory queue, three-item pending approval cap, two useful work items per pilot run, one source per week and three total derivatives per week. Preserve the original pilot schedule, counters and stop date. Items held outside a full approval queue remain held. This plan adds no fourth approval item, recurring job, community outreach or new blog publication.
 
-A transparent public GitHub alpha may precede the live integration pilot. General product promotion and production claims remain gated by the clean-host and synthetic live evidence above.
+Carry existing scoped authorization forward for routine work it covers. Resolve only genuinely missing access or work outside that scope. Release, site and social publication retain their existing owners and execution boundaries. See [automation and approvals](automation-and-approvals.md).
 
-## Phase 2 Publish the approved package and installation page
+## בקצרה בעברית
 
-1. Publish the reviewed repository and release when the final revision and destination are approved. Include per-skill archives and their generated checksum manifest.
-2. Have the Anyx site owner stage a focused installation page with the real release URL, account prerequisites, skill choices, and a short synthetic demo.
-3. Link the page to the canonical [MCP quickstart](https://docs.anyx.app/developers/mcp-quickstart) and [tool reference](https://docs.anyx.app/developers/mcp-tools). Keep setup detail with its owning documentation.
-4. Verify the public repository, archive downloads, installation instructions, website links, and resulting skill discovery. Record public availability separately from search indexing and usage.
+1. **פיילוט סגור:** התקנה נקייה במארח אחד, שני שימושים ברורים ומקורות שנבדקו. הקריאה החיה במארח הקיים הושלמה; התקנה נקייה וכתיבה למערכת אחרת עדיין פתוחות.
+2. **פתיחה מוגבלת:** 3–5 משתמשים. יעד מוצע: שלוש הפעלות ראשונות מועילות, עד עזרה נקודתית אחת לכל משתמש, ושני משתמשים חוזרים בתוך שבעה ימים. מציגים את מספר המתחילים בפועל.
+3. **השקה ציבורית:** המאמר הקיים כמקור, מקטע האתר והודעה חברתית כשני נגזרים. המקום השלישי פנוי. טעות מהותית או חסם התקנה חוזר עוצרים הרחבה; 20 מבקרים מדודים ללא הפעלה מאומתת מחייבים בדיקת המשפך.
 
-The installation page should explain that near one click use follows account eligibility, connected groups, authenticated Streamable HTTP MCP, skill installation, and initial group/time scope. Artifact generation needs the appropriate host renderer. Destination writes need a separate authenticated connector and an approved mapping.
-
-## Phase 3 Distribute through existing owners
-
-| Channel | Concrete staged material | Handoff |
-| --- | --- | --- |
-| GitHub README and release | Summary, eight workflows, install route, MIT, validation evidence, and known limitations | Repository owner publishes the final release |
-| Anyx site | Installation page, skill chooser, synthetic example, exact download links | Existing site owner reviews and deploys |
-| Existing blog | A technical walkthrough tied to the supplier inquiry example and actual install route | Existing blog owner incorporates it into the current content queue |
-| Existing social channels | One EN or HE launch message, short demo, and the installation link | Existing social owner handles scheduling and posting |
-| Relevant developer communities | A substantial technical post with tested example and platform-specific disclosure | Prepare under community rules and obtain posting scope |
-| Official MCP Registry | Server metadata only if the actual Anyx server satisfies current eligibility and namespace ownership | Server owner reviews the registry submission separately |
-
-The Official MCP Registry registers eligible MCP servers. Skill folders need their host's own distribution route. Registry inclusion requires checking the actual server, authentication, ownership, and current submission rules. [Registry guidance](https://modelcontextprotocol.io/registry/about), [remote servers](https://modelcontextprotocol.io/registry/remote-servers)
-
-For DEV, preserve substantial technical value and AI disclosure. A company-blog source link needs the company organization route and policy fit. Other communities need a relevant audience and their current posting rules. [DEV Terms](https://dev.to/terms), [AI guidelines](https://dev.to/devteam/guidelines-for-ai-assisted-articles-on-dev-17n6)
-
-## Prepared release copy
-
-Use this copy after its claims match the final tested release. Append the real approved installation URL when available.
-
-### English
-
-**Anyx Agent Kit**
-
-Eight open source skills help your agent turn authorized WhatsApp group context into team briefings, materials reviews, decision logs, project dashboards, presentations, project videos, project control reports, and reviewed workspace changes.
-
-Connect your Anyx account through MCP, install the skills in a compatible host, and choose a group and time window. The agent keeps source references and flags missing information. Rendering and workspace updates use the tools and authenticated connectors available in your host.
-
-Released under MIT. Start with the installation guide and a synthetic demo project.
-
-### עברית
-
-**Anyx Agent Kit**
-
-שמונה יכולות בקוד פתוח עוזרות לסוכן להפוך מידע מורשה מקבוצות WhatsApp לעדכוני צוות, בדיקת חומרים, יומן החלטות, דשבורד, מצגת, וידאו פרויקט, דוח בקרה ושינויים מוצעים במערכת העבודה.
-
-מחברים את חשבון Anyx דרך MCP, מתקינים את היכולות במארח מתאים ובוחרים קבוצה וטווח זמן. הסוכן שומר הפניות למקורות ומסמן מידע חסר. יצירת תוצרים ועדכון מערכות תלויים בכלים ובמחברים הזמינים במארח.
-
-הערכה מופצת ברישיון MIT. מתחילים במדריך ההתקנה ובפרויקט הדגמה עם מידע סינתטי.
-
-### Short social handoff
-
-EN: We are preparing Anyx Agent Kit, eight MIT-licensed skills for evidence-based workflows from authorized WhatsApp group context. Connect Anyx MCP, choose a group and time window, and use the tools available in your agent host. Installation and synthetic demo details will accompany the approved release.
-
-HE: מכינים את Anyx Agent Kit, שמונה יכולות ברישיון MIT לעבודה עם מידע מורשה מקבוצות WhatsApp. מחברים Anyx MCP, בוחרים קבוצה וטווח זמן ומשתמשים בכלים הזמינים במארח הסוכן. פרטי התקנה והדגמה סינתטית יצורפו לגרסה המאושרת.
-
-The materials walkthrough can refer to the existing [supplier inquiry article](https://anyx.app/blog/whatsapp-mcp-materials-supplier-inquiry). The package's [systems matrix](systems-compatibility.md) supplies destination research and access gates.
-
-## Queue and evidence
-
-Preserve the current directory queue, three-item pending approval cap, two useful work items per pilot run, one source per week, and three total derivatives per week. Route the package article and launch messages through existing owners. Keep the pilot's original schedule, counters, and stop date.
-
-Record repository/release availability, clean installation, synthetic pilot, useful production use if later authorized, referral traffic, and independent citations as separate outcomes. The package is an owned distribution asset. Independent editorial references need their own evidence.
+alpha.3 מוכנה מקומית לביקורת סופית ולהיקף שחרור מתאים. אין כאן טענה שפורסמה, ואין לפרסם תוכן מהפיילוט הפרטי.
