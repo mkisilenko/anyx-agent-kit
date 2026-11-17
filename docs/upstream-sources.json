@@ -1,0 +1,19 @@
+{
+  "reviewed_on": "2026-11-17",
+  "timezone": "Asia/Jerusalem",
+  "scope": "Public documentation baseline, not a live MCP or client compatibility test",
+  "sources": [
+    {
+      "id": "mcp-tools",
+      "url": "https://raw.githubusercontent.com/mkisilenko/docs/main/developers/mcp-tools.mdx",
+      "reviewed_blob_sha": "e9764ab010110ac7fa799744842e2505b0d4697c",
+      "sha256": "3b3933f3460c8a5257314c705017aa93b4b8287e2ba69ac18d1d24cc32028907"
+    },
+    {
+      "id": "mcp-quickstart",
+      "url": "https://raw.githubusercontent.com/mkisilenko/docs/main/developers/mcp-quickstart.mdx",
+      "reviewed_blob_sha": "c673fbea58fbc731f2c022264230bd2f886a30ec",
+      "sha256": "b29368c571e51f5780c11acffd96475ef0c2906e0b2ced41378f9fdb2ea8d4db"
+    }
+  ]
+}

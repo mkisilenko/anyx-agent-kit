@@ -1,0 +1,27 @@
+{
+  "artifact_kind": "mp4",
+  "rendered": true,
+  "verified": true,
+  "duration_seconds": 40.0,
+  "width": 1280,
+  "height": 720,
+  "audio": "none",
+  "source_registry": "brief.json",
+  "render_command": [
+    "hyperframes",
+    "render",
+    ".",
+    "--output",
+    "project-update.mp4",
+    "--fps",
+    "24",
+    "--quality",
+    "draft",
+    "--workers",
+    "1",
+    "--strict",
+    "--no-best-effort"
+  ],
+  "file": "project-update.mp4",
+  "codec": "h264"
+}

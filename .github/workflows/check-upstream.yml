@@ -1,0 +1,19 @@
+name: Check public Anyx documentation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, verified 2026-11-17
+        with:
+          persist-credentials: false
+      - name: Detect upstream contract changes without rewriting skills
+        run: python3 tools/check_upstream.py --check
+

@@ -1,0 +1,26 @@
+name: Validate Anyx Agent Kit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, verified 2026-11-17
+        with:
+          persist-credentials: false
+      - name: Validate portable skills
+        run: python3 tools/validate_kit.py
+      - name: Check offline fixture adapter
+        run: python3 -m unittest discover -s tests
+      - name: Build local archives
+        run: python3 tools/build_skill_zips.py
+

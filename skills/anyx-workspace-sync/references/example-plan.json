@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "mode": "propose",
+  "scope": {
+    "project_id": "demo-P42",
+    "description": "Review one internal project note from the selected captured discussion."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "system": "Anyx MCP synthetic fixture",
+      "reference": "Demo Project group, Maya, 2026-11-17T10:00:00Z, synthetic record demo-record-1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_id": "demo-op-1",
+      "system": "Demo PM",
+      "account_identifier": "demo-tenant",
+      "object_type": "project",
+      "object_id": "demo-project-42",
+      "action": "update",
+      "before": {
+        "internal_summary": "Revised scope awaiting review."
+      },
+      "after": {
+        "internal_summary": "Revised scope remains open. Maya requested another review."
+      },
+      "source_ids": [
+        "S1"
+      ],
+      "authority": "Maya's explicit request to review the revised scope. No operational start approval was supplied.",
+      "base": {
+        "version": "demo-v7"
+      },
+      "authorization_reference": null,
+      "idempotency_key": "demo-P42-internal-note-v1",
+      "depends_on": [],
+      "state": "proposed",
+      "external_receipt": null
+    }
+  ]
+}

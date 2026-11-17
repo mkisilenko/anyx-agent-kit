@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "language": "en",
+  "project": {
+    "id": "J42",
+    "title": "Field team project brief",
+    "period": {
+      "start": "2026-11-17T09:00:00+02:00",
+      "end": "2026-11-17T11:00:00+02:00",
+      "timezone": "Asia/Jerusalem"
+    },
+    "data_as_of": "2026-11-17T11:00:00+02:00"
+  },
+  "coverage": {
+    "status": "partial",
+    "note": "Synthetic demonstration. Captured records for the selected two-hour window only. This is a local snapshot."
+  },
+  "summary": [
+    {
+      "text": "J42 is on hold pending a revised signed scope and a new approval.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "text": "The materials review retains seven F20 pieces and two boxes as separate units.",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S5"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "A1",
+      "title": "Obtain the revised signed scope",
+      "owner": null,
+      "status": "unassigned",
+      "due": null,
+      "source_ids": [
+        "S1",
+        "S7"
+      ]
+    },
+    {
+      "id": "A2",
+      "title": "Confirm the F20 box size",
+      "owner": null,
+      "status": "proposed",
+      "due": null,
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "A3",
+      "title": "Review implementation evidence for the scope change",
+      "owner": null,
+      "status": "proposed",
+      "due": null,
+      "source_ids": [
+        "S3"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "text": "The prior conditional approval was withdrawn.",
+      "status": "withdrawn",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "D2",
+      "text": "The increased budget remains a proposal.",
+      "status": "proposed",
+      "source_ids": [
+        "S6",
+        "S1"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "text": "A current owner for the revised scope has not been established.",
+      "status": "open",
+      "source_ids": [
+        "S7"
+      ]
+    },
+    {
+      "text": "A code change is still a draft and does not prove deployment.",
+      "status": "open",
+      "source_ids": [
+        "S3"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "system": "anyx",
+      "group_id": "10000000-0000-4000-8000-000000000001",
+      "record_id": "20000000-0000-4000-8000-000000000304",
+      "timestamp": "2026-11-17T10:00:00+02:00",
+      "label": "Synthetic project hold message",
+      "url": null
+    },
+    {
+      "id": "S2",
+      "system": "anyx",
+      "group_id": "10000000-0000-4000-8000-000000000001",
+      "record_id": "20000000-0000-4000-8000-000000000208",
+      "timestamp": "2026-11-17T10:10:00+02:00",
+      "label": "Synthetic J25 request for two F20 boxes, pack size unknown",
+      "url": null
+    },
+    {
+      "id": "S3",
+      "system": "github",
+      "timestamp": "2026-11-17T10:30:00+02:00",
+      "label": "Synthetic draft PR, not an actual repository change",
+      "url": null
+    },
+    {
+      "id": "S4",
+      "system": "anyx",
+      "group_id": "10000000-0000-4000-8000-000000000001",
+      "record_id": "20000000-0000-4000-8000-000000000206",
+      "timestamp": "2026-11-17T10:00:00+02:00",
+      "label": "Synthetic J21 correction to four F20 pieces",
+      "url": null
+    },
+    {
+      "id": "S5",
+      "system": "anyx",
+      "group_id": "10000000-0000-4000-8000-000000000001",
+      "record_id": "20000000-0000-4000-8000-000000000202",
+      "timestamp": "2026-11-17T09:05:00+02:00",
+      "label": "Synthetic J22 request for three F20 pieces",
+      "url": null
+    },
+    {
+      "id": "S6",
+      "system": "anyx",
+      "group_id": "10000000-0000-4000-8000-000000000001",
+      "record_id": "20000000-0000-4000-8000-000000000303",
+      "timestamp": "2026-11-17T09:20:00+02:00",
+      "label": "Synthetic increased-budget proposal",
+      "url": null
+    },
+    {
+      "id": "S7",
+      "system": "anyx",
+      "group_id": "10000000-0000-4000-8000-000000000001",
+      "record_id": "20000000-0000-4000-8000-000000000306",
+      "timestamp": "2026-11-17T10:10:00+02:00",
+      "label": "Synthetic revised-scope owner remains unassigned",
+      "url": null
+    }
+  ]
+}

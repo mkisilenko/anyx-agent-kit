@@ -1,0 +1,20 @@
+{
+  "name": "anyx-agent-kit",
+  "version": "0.1.0-alpha.1",
+  "license": "MIT",
+  "homepage": "https://anyx.app",
+  "repository": "https://github.com/mkisilenko/anyx-agent-kit",
+  "skills": [
+    "anyx-team-catchup",
+    "anyx-materials-review",
+    "anyx-decision-log",
+    "anyx-project-dashboard",
+    "anyx-project-presentation",
+    "anyx-project-video",
+    "anyx-project-control",
+    "anyx-workspace-sync"
+  ],
+  "data_policy": "Private customer data is not part of this repository or its MIT license.",
+  "integration_status": "Destination mappings documented; authenticated native integrations unverified."
+}
+
