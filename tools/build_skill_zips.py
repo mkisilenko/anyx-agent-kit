@@ -50,7 +50,7 @@ def build(root: Path = ROOT) -> dict:
             if resource.suffix in SUFFIXES or resource.name in {"LICENSE", ".gitignore", ".gitattributes"}:
                 add_file(archive, resource, f"anyx-agent-kit/{rel.as_posix()}")
     artifacts.append({"file": path.name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
-    manifest = {"status": "prepared locally, not published", "artifacts": artifacts}
+    manifest = {"status": "packaged", "publication_verified_by_builder": False, "artifacts": artifacts}
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     return manifest
 
