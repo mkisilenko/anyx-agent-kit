@@ -1,6 +1,7 @@
 """Offline artifact invariants; no browser, Hyperframes render, or remote calls."""
 from __future__ import annotations
 
+import base64
 import copy
 from html import unescape
 from html.parser import HTMLParser
@@ -162,6 +163,7 @@ class RendererArtifactChecks(unittest.TestCase):
         skill, script = SKILLS[kind]
         independent = self.workspace / (kind + "-isolated")
         shutil.copytree(ROOT / "skills" / skill / "scripts", independent / "scripts")
+        shutil.copytree(ROOT / "skills" / skill / "assets", independent / "assets")
         source = independent / "brief.json"
         source.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
         output = independent / ("composition" if kind == "video" else "artifact.html")
@@ -214,7 +216,11 @@ class RendererArtifactChecks(unittest.TestCase):
                 self.assertNotIn(image_text, html)
                 self.assertIn(script_text, " ".join(parsed.visible))
                 self.assertFalse(any("onerror" in attrs for _, attrs in parsed.tags))
-                self.assertFalse(any(tag == "img" for tag, _ in parsed.tags))
+                images = [attrs for tag, attrs in parsed.tags if tag == "img"]
+                self.assertEqual(len(images), 1)
+                self.assertEqual(images[0].get("class"), "brand-logo")
+                self.assertEqual(base64.b64decode(images[0]["src"].split(",", 1)[1], validate=True),
+                                 (ROOT / "assets/brand/anyx-logo.png").read_bytes())
 
     def test_provenance_and_requested_period_survive_artifact_generation(self):
         for kind in SKILLS:

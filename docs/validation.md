@@ -1,10 +1,30 @@
 # Validation evidence
 
-**TLDR:** All eight skills pass skill validation. All 32 automated tests and five independent synthetic workflow cases passed. Dashboard/deck controls were inspected in Chrome. A real 40-second Hyperframes MP4 was rendered and representative frames inspected.
+**TLDR:** Alpha.2 branding passes 36 offline tests and eight portable skill checks. The four added tests verify original PNG bytes in installed-skill output and ZIPs, plus the dashboard image policy. Earlier alpha.1 visual and workflow inspections are recorded separately below.
 
 Reviewed on 17 November 2026, Asia/Jerusalem. All conversations, projects, external records and media demos are synthetic.
 
-## Evidence
+
+## Current alpha.2 branding checks
+
+Version `0.1.0-alpha.2` is a branding update. It does not include the separately prepared post-review input-validation, sync-authorization, cutoff or video-timing candidate.
+
+| Layer | Observed result |
+| --- | --- |
+| Automated suite | 36 tests passed: 32 existing cases plus four dedicated branding tests. |
+| Original asset | Canonical PNG and all three skill copies match SHA-256 `4b898fa294753d522b6a5c39475f0a430e01b5127cb0bfb39e208d29b80d3f43`, 1,303,035 bytes each. |
+| Actual output image | Each skill was unpacked from its ZIP and run from an unrelated working directory. Independently decoded PNG data URIs match the original bytes. There is one persistent logo in each HTML document, with proportional contain sizing. |
+| Binary packaging | Extracted PNGs from three skill ZIPs and the full-kit ZIP match the original. Full-kit branding guidance is included. Existing archive reproducibility and private-state exclusion checks passed. |
+| Image policy | Dashboard CSP permits `data:` images without remote image origins. Existing escaping and source-registry checks passed with only the trusted logo image allowed. |
+| Portable structure | Eight skills passed frontmatter and self-contained-reference checks. |
+| Regenerated public examples | Dashboard and all ten HTML slides opened in local Chrome at desktop and mobile widths. The original image loaded and remained visible with contain sizing. A local Chrome print produced ten PDF pages with the logo on every page, also inspected after rasterization. |
+| Branded MP4 | The public video example was rendered again: H.264, 1280x720, 24fps, 40 seconds, no audio. Ten frames sampled at each scene midpoint showed the original logo without cropping or distortion. |
+
+All examples are synthetic and English. This branding QA used local Chrome and sampled video frames. It does not establish other browser behavior, every video frame, general caption readability or live MCP behavior. The pre-existing four-second scene timing is unchanged in this branding-only release. No live Anyx or destination records were read for these checks.
+
+## Historical alpha.1 evidence
+
+The evidence below predates the original-logo integration. Its 32-test count, five workflow cases and rendering observations describe alpha.1, rather than extra alpha.2 checks.
 
 | Layer | Observed result |
 | --- | --- |

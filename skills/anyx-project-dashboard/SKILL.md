@@ -41,6 +41,11 @@ Make the project title, requested period, data-as-of timestamp and coverage note
 
 Open the generated file when a browser or preview tool is available. Check the actual output for Hebrew/RTL order when applicable, readable status labels, clipped text, missing sources and misleading empty states. If visual inspection is unavailable, disclose that specific gap. Confirm the file exists and contains the intended project before linking it.
 
+
+## Apply the supplied Anyx brand
+
+Use the bundled original [Anyx logo](assets/brand/anyx-logo.png) in the artifact header. The helper embeds its unchanged PNG bytes locally, with preserved transparency and proportions. Keep it secondary to project content, usually 56 pixels square; use `object-fit: contain`, without cropping, recoloring, stretching or recreating the mark. Keep status, sources and coverage legible. A native presentation backend should reuse this same supplied asset. Branding is for the requested artifact, not unrelated text replies; it does not authorize sharing or publication.
+
 ## Deliver the artifact
 
 Answer in the user's language, starting with at most three short bullets; use **בקצרה** in Hebrew. Link the actual dashboard and state its format, snapshot cutoff and any material coverage limitation. A brief or a failed render is preparation, not a completed dashboard. Refresh only when requested or under an existing authorized schedule; do not create a new automation, send messages or publish the file as part of this skill.

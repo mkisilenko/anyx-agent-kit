@@ -51,6 +51,11 @@ Resolve script paths relative to this skill folder and choose a new output direc
 
 Use local assets, scripts and fonts for private project content. Do not send the brief to a cloud renderer, HeyGen generation service, remote voice model or sharing endpoint by default. A local render must not silently become a paid or externally hosted workflow. Use only supplied or appropriately licensed media; a silent video with clear captions is preferable to inventing narration audio or licensing music.
 
+
+## Apply the supplied Anyx brand
+
+Use the bundled original [Anyx logo](assets/brand/anyx-logo.png) in the artifact header. The helper embeds its unchanged PNG bytes locally, with preserved transparency and proportions. Keep it secondary to project content, usually 56 pixels square; use `object-fit: contain`, without cropping, recoloring, stretching or recreating the mark. Keep status, sources and coverage legible. A native presentation backend should reuse this same supplied asset. Branding is for the requested artifact, not unrelated text replies; it does not authorize sharing or publication.
+
 ## Verify and deliver the actual output
 
 For a rendered file, check that it is playable video with a nonzero duration, inspect representative opening/middle/closing frames and confirm readable Hebrew/RTL captions when applicable. Check stated timing, source markers, source/coverage credits and audio presence if audio was requested. If no playback or frame inspection is available, disclose that precise validation gap.

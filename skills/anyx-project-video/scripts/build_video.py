@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
-from brief_support import disclosures, h, item_details, read_brief, ui
+from brief_support import brand_logo, disclosures, h, item_details, read_brief, ui
 
 
 def append_scenes(scenes, label, headline, lines):
@@ -56,10 +56,11 @@ def build(data, output):
 *{{box-sizing:border-box}}html,body{{margin:0;width:1280px;height:720px;background:#091812;color:#f0faef;overflow:hidden;font-family:Arial,sans-serif}}
 #root{{position:relative;width:1280px;height:720px;overflow:hidden}}.scene{{position:absolute;inset:0;padding:110px 86px 100px;background:#10291b}}
 .label{{font-size:24px;color:#aaf3b6;letter-spacing:.08em}}h1{{font-size:53px;line-height:1.08;max-width:1050px;margin:28px 0 35px;overflow-wrap:anywhere}}
-p{{font-size:28px;line-height:1.35;max-width:1050px;margin:18px 0;overflow-wrap:anywhere}}.brand{{position:absolute;top:36px;left:86px;font-size:20px;letter-spacing:.16em;color:#aaf3b6;z-index:20}}
+p{{font-size:28px;line-height:1.35;max-width:1050px;margin:18px 0;overflow-wrap:anywhere}}.brand{{display:flex;align-items:center;gap:12px;direction:ltr;position:absolute;top:36px;left:86px;font-size:20px;letter-spacing:.16em;color:#aaf3b6;z-index:20}}
+.brand-logo{{display:block;width:56px;height:56px;object-fit:contain;flex-shrink:0}}
 .footer{{position:absolute;bottom:25px;left:86px;right:60px;font-size:16px;color:#bad2c0;z-index:20}}
 </style></head><body><div id="root" data-composition-id="main" data-start="0" data-duration="{duration}" data-width="1280" data-height="720" data-fps="24" data-no-timeline>
-{cards}<div class="brand">ANYX AGENT KIT</div><div class="footer">{h(data["project"]["data_as_of"])} · {h(ui(data,"Synthetic demo" if data["synthetic"] else "Private snapshot"))} · {h(ui(data,"Captured context, review required"))} · anyx.app</div></div></body></html>"""
+{cards}<div class="brand">{brand_logo()}<span>ANYX AGENT KIT</span></div><div class="footer">{h(data["project"]["data_as_of"])} · {h(ui(data,"Synthetic demo" if data["synthetic"] else "Private snapshot"))} · {h(ui(data,"Captured context, review required"))} · anyx.app</div></div></body></html>"""
     (output/"index.html").write_text(content,encoding="utf-8")
     (output/"brief.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     result={"artifact_kind":"composition","rendered":False,"verified":False,"duration_seconds":duration,

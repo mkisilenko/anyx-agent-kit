@@ -1,8 +1,12 @@
 # Anyx Agent Kit
 
+<img src="assets/brand/anyx-logo.png" width="96" height="96" alt="Anyx logo">
+
 **TLDR:** Eight MIT-licensed skills turn authorized WhatsApp group context into briefings, reviews, project artifacts, and controlled workspace changes. This is an alpha toolkit. Local rendering is exercised, while live MCP and destination integrations need a scoped pilot. Connect an eligible Anyx account and install the skills before trying a scoped workflow.
 
 [Anyx](https://anyx.app) connects the group context to a compatible agent through its authenticated MCP service. The kit adds workflow instructions and synthetic examples. The existing [Anyx documentation repository](https://github.com/mkisilenko/docs) remains the canonical source for connection and tool documentation.
+
+Version `0.1.0-alpha.2` adds the supplied Anyx logo to the repository, portable visual skills, regenerated examples and future renderer output. See [branding and asset integrity](BRANDING.md). This update does not include the separately prepared post-review behavior fixes. Its 36 offline tests include four new checks of original image bytes, installed-skill output and binary ZIP preservation; [validation evidence](docs/validation.md) separates these from earlier alpha.1 inspections.
 
 ## Choose a workflow
 

@@ -1,6 +1,6 @@
 """Render an offline HTML slide deck. This helper does not create a PPTX."""
 import argparse
-from brief_support import disclosures, h, item_details, read_brief, save_text, source_markup, source_registry, ui
+from brief_support import brand_logo, disclosures, h, item_details, read_brief, save_text, source_markup, source_registry, ui
 
 def render(data):
     project=data["project"]
@@ -29,20 +29,21 @@ def render(data):
         pages.append((ui(data,"Sources"),body))
     period=project["period"]
     footer=f'<bdi>{h(period["start"])}</bdi> {h(ui(data,"to"))} <bdi>{h(period["end"])}</bdi> · <bdi>{h(period["timezone"])}</bdi>'
-    sections="".join(f'<section class="slide" id="slide-{i}"><div class="brand">ANYX AGENT KIT</div><h1>{h(title)}</h1>{body}<footer>{footer} · {i+1}/{len(pages)}</footer></section>' for i,(title,body) in enumerate(pages))
+    sections="".join(f'<section class="slide" id="slide-{i}"><h1>{h(title)}</h1>{body}<footer>{footer} · {i+1}/{len(pages)}</footer></section>' for i,(title,body) in enumerate(pages))
     direction="rtl" if data["language"]=="he" else "ltr"
     script="let i=0;const s=[...document.querySelectorAll('.slide')];function show(n){i=Math.max(0,Math.min(s.length-1,n));s.forEach((e,j)=>e.hidden=j!==i);document.getElementById('page').textContent=(i+1)+' / '+s.length}document.getElementById('next').onclick=()=>show(i+1);document.getElementById('previous').onclick=()=>show(i-1);document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)});show(0);"
     return f"""<!doctype html><html lang="{data["language"]}" dir="{direction}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{h(project["title"])} | Anyx {h(ui(data,"presentation"))}</title><style>
 *{{box-sizing:border-box}}body{{margin:0;background:#06100c;color:#f5faf4;font:26px/1.35 system-ui,sans-serif}}
-.slide{{position:relative;max-width:1280px;min-height:720px;margin:auto;padding:54px 72px 82px;background:#10251a}}.slide[hidden]{{display:none}}
-.brand{{font-size:17px;letter-spacing:.18em;color:#b1f5bc;font-weight:800}}h1{{font-size:48px;line-height:1.08;max-width:1000px;margin:34px 0}}
+.slide{{position:relative;max-width:1280px;min-height:720px;margin:auto;padding:92px 72px 82px;background:#10251a}}.slide[hidden]{{display:none}}
+.brand{{position:fixed;top:20px;left:max(24px,calc((100vw - 1280px)/2 + 72px));z-index:5;display:flex;align-items:center;gap:12px;direction:ltr;font-size:17px;letter-spacing:.18em;color:#b1f5bc;font-weight:800}}h1{{font-size:48px;line-height:1.08;max-width:1000px;margin:34px 0}}
+.brand-logo{{display:block;width:56px;height:56px;object-fit:contain;flex-shrink:0}}
 .intro{{font-size:34px;color:#b1f5bc}}.entry{{border-top:1px solid #4c6953;margin-top:23px;padding-top:12px}}p{{max-width:1050px;margin:14px 0}}
 small{{font-size:18px;color:#bed1c0}}.source{{font-size:22px;overflow-wrap:anywhere}}a{{color:#b1f5bc}}footer{{position:absolute;bottom:24px;font-size:14px;color:#bed1c0}}
 nav{{display:flex;justify-content:center;align-items:center;gap:18px;padding:16px}}button{{font:18px system-ui;padding:9px 18px;background:#b1f5bc;border:0;border-radius:6px;cursor:pointer}}
-@media(max-width:800px){{.slide{{padding:32px 24px 80px;min-height:100vh}}h1{{font-size:36px}}body{{font-size:21px}}}}
+@media(max-width:800px){{.brand{{top:12px;left:24px}}.slide{{padding:82px 24px 80px;min-height:100vh}}h1{{font-size:36px}}body{{font-size:21px}}}}
 @media print{{@page{{size:16in 9in;margin:0}}nav{{display:none}}.slide,.slide[hidden]{{display:block!important;break-after:page;width:1280px;height:720px;margin:0}}}}
-</style>{sections}<nav aria-label="{h(ui(data,"Slide navigation"))}"><button id="previous">{h(ui(data,"Previous"))}</button><span id="page"></span><button id="next">{h(ui(data,"Next"))}</button></nav>{source_registry(data)}<script>{script}</script></html>"""
+</style><div class="brand">{brand_logo()}<span>ANYX AGENT KIT</span></div>{sections}<nav aria-label="{h(ui(data,"Slide navigation"))}"><button id="previous">{h(ui(data,"Previous"))}</button><span id="page"></span><button id="next">{h(ui(data,"Next"))}</button></nav>{source_registry(data)}<script>{script}</script></html>"""
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)

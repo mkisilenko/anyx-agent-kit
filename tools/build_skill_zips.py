@@ -9,7 +9,8 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 from validate_kit import ROOT, validate
 
 SKIP = {".git", ".validation", "__pycache__", "dist", ".venv", "node_modules", ".hyperframes", "renders", ".pytest_cache"}
-SUFFIXES = {".md", ".py", ".json", ".yml", ".yaml", ".txt", ".html", ".js", ".mjs", ".css", ".svg", ".mp4"}
+SUFFIXES = {".md", ".py", ".json", ".yml", ".yaml", ".txt", ".html", ".js", ".mjs", ".css", ".svg", ".mp4", ".png"}
+BINARY_SUFFIXES = {".mp4", ".png"}
 FIXED_TIME = (1980, 1, 1, 0, 0, 0)
 
 
@@ -18,7 +19,7 @@ def add_file(archive: ZipFile, path: Path, arcname: str) -> None:
     info.compress_type = ZIP_DEFLATED
     info.external_attr = 0o644 << 16
     data = path.read_bytes()
-    if path.suffix in SUFFIXES - {".mp4"} or path.name in {"LICENSE", ".gitignore", ".gitattributes"}:
+    if path.suffix in SUFFIXES - BINARY_SUFFIXES or path.name in {"LICENSE", ".gitignore", ".gitattributes"}:
         data = data.replace(b"\r\n", b"\n")
     archive.writestr(info, data)
 

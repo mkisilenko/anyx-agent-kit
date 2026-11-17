@@ -1,6 +1,7 @@
 """Shared renderer contract, copied locally so each skill is independently installable."""
 from __future__ import annotations
 from datetime import datetime
+import base64
 from html import escape
 import json
 from pathlib import Path
@@ -232,3 +233,10 @@ def disclosures(data):
     phrase = "Synthetic demo" if data["synthetic"] else "Private project snapshot"
     return ui(data, phrase) + ". " + data["coverage"]["note"]
 
+
+
+def brand_logo():
+    """Embed the bundled original PNG unchanged; no network or image conversion."""
+    asset = Path(__file__).resolve().parent.parent / "assets" / "brand" / "anyx-logo.png"
+    encoded = base64.b64encode(asset.read_bytes()).decode("ascii")
+    return f'<img class="brand-logo" src="data:image/png;base64,{encoded}" alt="Anyx" width="56" height="56">'

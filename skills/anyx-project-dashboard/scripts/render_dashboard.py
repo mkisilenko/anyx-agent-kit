@@ -1,7 +1,7 @@
 """Render a source-backed local dashboard. No network, publication or live connection."""
 import argparse
 import hashlib
-from brief_support import disclosures, h, read_brief, refs, save_text, source_list, source_registry, status_label, ui
+from brief_support import brand_logo, disclosures, h, read_brief, refs, save_text, source_list, source_registry, status_label, ui
 
 def render(data):
     project = data["project"]
@@ -19,18 +19,19 @@ def render(data):
     direction = "rtl" if data["language"] == "he" else "ltr"
     return f"""<!doctype html><html lang="{data["language"]}" dir="{direction}"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-{digest}'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'sha256-{digest}'">
 <title>{h(project["title"])} | Anyx</title><style>
 *{{box-sizing:border-box}}body{{margin:0;background:#091512;color:#eff8f1;font:17px/1.5 system-ui,sans-serif}}
 main{{max-width:1120px;margin:auto;padding:42px 28px}}a{{color:#a8fac3}}header{{border-bottom:1px solid #395145;padding-bottom:24px}}
-.brand{{font-weight:800;letter-spacing:.12em;color:#a8fac3}}h1{{font-size:clamp(32px,5vw,54px);line-height:1.08;margin:18px 0}}
+.brand{{display:flex;align-items:center;gap:12px;direction:ltr;font-weight:800;letter-spacing:.12em;color:#a8fac3}}h1{{font-size:clamp(32px,5vw,54px);line-height:1.08;margin:18px 0}}
+.brand-logo{{display:block;width:56px;height:56px;object-fit:contain;flex-shrink:0}}
 .meta,small{{color:#b7cbbd}}.summary{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:28px 0}}
 article{{background:#15291f;padding:22px;border-radius:12px;border:1px solid #36563d}}article h2{{font-size:23px;line-height:1.3;margin:0}}
 .stats{{display:flex;gap:30px;flex-wrap:wrap;margin:28px 0}}.stats b{{font-size:34px;color:#a8fac3}}
 table{{border-collapse:collapse;width:100%;font-size:15px}}th,td{{text-align:start;border-bottom:1px solid #36513d;padding:12px 8px;vertical-align:top}}
 .scroll{{overflow:auto}}select{{padding:8px;color:#e5fbe9;background:#173423;border:1px solid #688d73}}section{{margin-top:34px}}
 .notice{{border-inline-start:3px solid #a8fac3;padding:12px 18px;background:#14241b}}li{{margin:12px 0;overflow-wrap:anywhere}}footer{{margin-top:40px;color:#b7cbbd}}
-</style><main><header><div class="brand">ANYX AGENT KIT</div><h1>{h(project["title"])}</h1>
+</style><main><header><div class="brand">{brand_logo()}<span>ANYX AGENT KIT</span></div><h1>{h(project["title"])}</h1>
 <p class="meta"><bdi>{h(project["id"])}</bdi> · {h(ui(data,"Data as of"))} <bdi>{h(project["data_as_of"])}</bdi></p>
 <p class="meta"><bdi>{h(project["period"]["start"])}</bdi> {h(ui(data,"to"))} <bdi>{h(project["period"]["end"])}</bdi> · <bdi>{h(project["period"]["timezone"])}</bdi></p></header>
 <p class="notice">{h(disclosures(data))} {h(ui(data,"This file is a snapshot and has no live data connection."))}</p>

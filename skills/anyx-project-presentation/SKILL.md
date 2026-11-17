@@ -43,6 +43,11 @@ Keep the deck and its assets local. No external slide service, account creation 
 
 Inspect the generated slides in an available preview or browser: opening and closing slides, long text, source legibility, Hebrew/RTL flow, controls and layout. For a native backend, follow its required render-and-review workflow. State when a visual check could not be completed. Confirm the actual output file or document before linking it.
 
+
+## Apply the supplied Anyx brand
+
+Use the bundled original [Anyx logo](assets/brand/anyx-logo.png) in the artifact header. The helper embeds its unchanged PNG bytes locally, with preserved transparency and proportions. Keep it secondary to project content, usually 56 pixels square; use `object-fit: contain`, without cropping, recoloring, stretching or recreating the mark. Keep status, sources and coverage legible. A native presentation backend should reuse this same supplied asset. Branding is for the requested artifact, not unrelated text replies; it does not authorize sharing or publication.
+
 ## Deliver
 
 Start the reply with at most three short bullets, localized to the user's language; use **בקצרה** in Hebrew. Link the actual deck, state HTML or the verified native format, and give the data cutoff plus material coverage or rendering limitations. Distinguish an editable deck, exported preview and outline. Do not send the presentation, publish it, alter project records or create a recurring update unless separately authorized.
