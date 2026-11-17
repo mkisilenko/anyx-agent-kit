@@ -1,7 +1,7 @@
 """Render a source-backed local dashboard. No network, publication or live connection."""
 import argparse
 import hashlib
-from brief_support import brand_logo, disclosures, h, read_brief, refs, save_text, source_list, source_registry, status_label, ui
+from brief_support import run_cli, brand_logo, disclosures, h, read_brief, refs, save_text, source_list, source_registry, status_label, ui
 
 def render(data):
     project = data["project"]
@@ -42,10 +42,14 @@ table{{border-collapse:collapse;width:100%;font-size:15px}}th,td{{text-align:sta
 <section><h2>{h(ui(data,"Sources"))}</h2><ol>{source_list(data)}</ol></section><footer>{h(ui(data,"Prepared with"))} <a href="https://anyx.app">Anyx</a>. {h(ui(data,"Sharing and publishing require an approved destination."))}</footer>
 </main>{source_registry(data)}<script>{script}</script></html>"""
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
     print(save_text(args.output, render(read_brief(args.input))))
 
+
+
+if __name__ == "__main__":
+    run_cli(main)

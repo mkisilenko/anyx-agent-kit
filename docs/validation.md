@@ -1,13 +1,35 @@
 # Validation evidence
 
-**TLDR:** Alpha.2 branding passes 36 offline tests and eight portable skill checks. The four added tests verify original PNG bytes in installed-skill output and ZIPs, plus the dashboard image policy. Earlier alpha.1 visual and workflow inspections are recorded separately below.
+**TLDR:** Alpha.3 passes 63 local tests and eight portable skill checks. A fresh 124-second MP4 uses the revised text timeline, original logo and clarified synthetic group scope; ten scene-midpoint frames were inspected. Real Chrome checks cover PDF geometry and desktop/mobile artifacts. Live MCP evidence is a separate pilot record.
 
 Reviewed on 17 November 2026, Asia/Jerusalem. All conversations, projects, external records and media demos are synthetic.
 
 
-## Current alpha.2 branding checks
 
-Version `0.1.0-alpha.2` is a branding update. It does not include the separately prepared post-review input-validation, sync-authorization, cutoff or video-timing candidate.
+## Current alpha.3 integration checks
+
+This local revision integrates the independent review fixes onto branded source `8387975a5a45f5053afe1702fa8f8a16559424f5`. The original PNG, all four byte-identical asset copies, eight-skill structure and binary ZIP packaging are preserved.
+
+| Layer | Observed result |
+| --- | --- |
+| Automated suite | 63 tests passed without skips: the 36 alpha.2 cases plus 27 new regressions. The original replay scenarios were not edited. |
+| Input and time bounds | Malformed containers, rows and excessively nested JSON produce clean errors. Missing optional arrays normalize consistently. Evidence cutoff cannot precede the window start; known source timestamps cannot exceed it. A requested end after cutoff requires partial coverage. |
+| Sync structure | Approved state requires an authorization reference in either mode. Exact identifier, business-key, receipt and ledger-reference types and SHA-256 base format are checked. Validation still performs zero remote writes and does not authenticate grants or receipts. |
+| Independent batches | The full ledger retains unknown outcomes. A separate independent execute batch preserves operation IDs, keys, bases and provenance; unresolved or unverified dependencies remain blocked. Live freshness and reconciliation remain executor responsibilities. |
+| Video pacing | Visible text, including repeated brand/footer, receives a heuristic 20 Unicode codepoints per second with a four-second minimum. Default total limit is 180 seconds; an explicit 60-second limit rejects the 124-second demo before creating output. Rows, statuses, owners, deadlines, conditions and source markers are retained. |
+| Actual PDF geometry | Existing local Chrome printed the independent Hebrew brief at initial viewports 390 and 1440. Six pages per run matched 1280×720 CSS pixels / 960×540 PDF points, with one logo image on each page. A deliberately stalled browser operation verified named timeouts and cleanup limited to its own test process tree. |
+| New actual video | Hyperframes 0.9.61 rendered 124.000 seconds, 1280×720 H.264, 24 fps, 2,976 frames and no audio. This is a new alpha.3 render, rather than evidence reused from an earlier 40-second MP4. |
+| Visual inspection | All ten actual video midpoint frames, dashboard at desktop/mobile and all ten deck slides at desktop/mobile were inspected. Original image bytes, visible branding, conditions and per-job material distinctions were retained, with no blocking clipping. Browser inspection observed no script errors or outbound attempts. |
+| Current-source binding | Regeneration with the final validators produced byte-identical dashboard, deck and video composition HTML to the reviewed render inputs. |
+| Imported tools | All eight reading references and installation guidance distinguish useful legacy core reads from long-text recovery requiring actually imported tools and returned references. Any truncation flag makes the affected field incomplete. |
+
+The shipped demonstration is a synthetic group briefing: J42 decisions and scope are separate from J21/J22/J25 materials. Its three portable skill copies share that clarified example. Independent replay fixtures retain their separate scenario contexts. No live group identity, customer content, credentials or private pilot result was copied into public code or examples.
+
+These automated and rendering checks are local. The browser check explicitly skips on a machine without its existing Node/Chrome/puppeteer-core/pypdf dependencies; it actually executed in this run. The pacing budget aids review and does not prove human reading speed. Sampling ten video frames is narrower than checking every frame. Native live MCP, clean-host discovery and destination writes require their own evidence; the local validator cannot establish them.
+
+## Historical alpha.2 branding checks
+
+Version `0.1.0-alpha.2` was a branding update. The validation and timing changes below were not included in that earlier version.
 
 | Layer | Observed result |
 | --- | --- |

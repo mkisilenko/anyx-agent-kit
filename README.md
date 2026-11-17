@@ -6,7 +6,7 @@
 
 [Anyx](https://anyx.app) connects the group context to a compatible agent through its authenticated MCP service. The kit adds workflow instructions and synthetic examples. The existing [Anyx documentation repository](https://github.com/mkisilenko/docs) remains the canonical source for connection and tool documentation.
 
-Version `0.1.0-alpha.2` adds the supplied Anyx logo to the repository, portable visual skills, regenerated examples and future renderer output. See [branding and asset integrity](BRANDING.md). This update does not include the separately prepared post-review behavior fixes. Its 36 offline tests include four new checks of original image bytes, installed-skill output and binary ZIP preservation; [validation evidence](docs/validation.md) separates these from earlier alpha.1 inspections.
+Version `0.1.0-alpha.3` integrates reviewed input-validation, authorization-reference, evidence-cutoff, independent-batch, print-geometry and video-pacing fixes while preserving the original [Anyx brand](BRANDING.md). The video helper uses text-based scene timing with a configurable 180-second default limit; it preserves conditions and rejects an insufficient explicit limit instead of truncating facts. See [validation evidence](docs/validation.md) for current checks and the separate history of earlier renders.
 
 ## Choose a workflow
 
@@ -54,7 +54,7 @@ Give me a short briefing with evidence and open questions.
 
 ## Synthetic artifact demos
 
-The [dashboard HTML](examples/rendered/dashboard.html) has a working status filter. The [presentation HTML](examples/rendered/presentation.html) is a navigable ten-slide deck. The [40-second MP4](examples/rendered/video/project-update.mp4) was rendered locally with Hyperframes 0.9.61 and verified at 1280x720 H.264 without audio. Its [source brief](examples/rendered/video/brief.json) accompanies the video. Download the HTML files to view them locally. They have no live data connection.
+The [dashboard HTML](examples/rendered/dashboard.html) has a working status filter. The [presentation HTML](examples/rendered/presentation.html) is a navigable ten-slide deck with matching 1280×720 print geometry. The [124-second MP4](examples/rendered/video/project-update.mp4) was freshly rendered with the alpha.3 text-based timeline using local Hyperframes 0.9.61: 1280×720, H.264, 24 fps, without audio. All ten scene-midpoint frames were inspected. Its [synthetic source brief](examples/rendered/video/brief.json) accompanies the video. Download the HTML files to view them locally; they have no live data connection. The group briefing keeps J42 scope separate from materials for J21/J22/J25. Independent replay cases are separate scenarios and do not form one shared project timeline.
 
 These fictional examples demonstrate artifact generation. They do not establish a connected customer account or native CRM integration. See the [systems matrix](docs/systems-compatibility.md) for the 15 documented API candidates.
 
@@ -80,7 +80,7 @@ From the kit directory:
 
 ```text
 python tools/validate_kit.py
-python -m unittest discover -s tests
+python -B -m unittest discover -s tests
 python tools/build_skill_zips.py
 ```
 
@@ -90,7 +90,7 @@ These checks validate package structure, fixtures, and build behavior. Record th
 
 | Readiness stage | Current evidence |
 | --- | --- |
-| Locally validated | All 8 skills validated. 32 offline tests and 5 independent synthetic workflow cases passed. HTML dashboard/deck controls and a real local MP4 were inspected. See [validation](docs/validation.md). |
+| Locally validated | All 8 portable skills and 63 local tests passed, including actual Chrome/PDF geometry and forced-hang cleanup. Fresh alpha.3 dashboard/deck and a 124-second local MP4 were inspected. Earlier independent synthetic workflow cases remain separately documented. See [validation](docs/validation.md). |
 | Clean host installed | Unverified. Record host version, installed skill, and discovery result. |
 | Live MCP synthetic pilot | Unverified. Use an explicitly scoped demo group and synthetic messages. |
 | Public repository | Selected public destination: [mkisilenko/anyx-agent-kit](https://github.com/mkisilenko/anyx-agent-kit). MIT is selected. Release availability is recorded separately. |

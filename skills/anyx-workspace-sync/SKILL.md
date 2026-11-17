@@ -41,6 +41,11 @@ Code edits need authorization for the intended repository/files. Commits, pushes
 
 Before a write, re-read the object and verify the current precondition, sources, field mapping and authorization. Use a version/ETag condition when the API exposes one. If only a snapshot fingerprint is available, recompute it from a fresh read. Resolve changed affected fields before writing. A read-then-write fallback has a race window. Hold operations that require an atomic check if the destination cannot supply it.
 
+
+An operation marked `approved` must always carry its actual `authorization_reference`, including in a `mode: propose` ledger. The helper checks that the reference exists; it cannot verify that an external user request really grants the operation.
+
+Keep the full state ledger, including `outcome_unknown` operations. A separate `mode: execute` batch may select independent approved operations and the verified prerequisite entries they need. Record the source ledger revision or hash in the batch review, preserve operation IDs, idempotency keys, account/record mapping, evidence, bases and authorization, and validate the batch. Omit unresolved operations from this batch only; never delete or reset them in the ledger or remove a dependency to bypass a hold. The executor must check that the batch still matches the ledger and fresh destination state before any write, then reconcile its receipts back to that same ledger. A mixed full ledger containing an unknown outcome is intentionally not an executable batch.
+
 ## Execute and reconcile each operation
 
 - Use a stable operation ID and idempotency key for the same intended change. Supply the key only through a destination's documented supported mechanism. A local key alone does not prevent duplicate external writes.

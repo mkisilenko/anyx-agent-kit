@@ -25,6 +25,10 @@ Create a UTF-8 JSON brief following the bundled `examples/demo-brief.json` forma
 - `summary`: objects with `text` and `source_ids`; `actions`: objects with `id`, `title`, `owner`, `status`, `due`, `source_ids`; `decisions`: objects with `id`, `text`, `status`, `source_ids`; `risks`: objects with `text`, `status`, `source_ids`.
 - `sources`: unique objects with `id`, `system`, `timestamp`, `label`, `url`, and available `group_id` and `record_id`. Use real URLs or `null`.
 
+The optional `summary`, `actions`, `decisions`, `risks` and `sources` arrays may be omitted and normalize to empty arrays. Explicit `null`, wrong container types or malformed rows are errors. Omitted action/decision/risk status becomes `unknown`; omitted action owner and due become `null`. These defaults mean unavailable facts, not verified absence.
+
+`project.data_as_of` is the evidence cutoff, not the artifact generation time. All timestamps used for bounds and known due values need an explicit UTC offset. The cutoff must be at or after `period.start`. Known source timestamps must be at or before that cutoff. Older supporting sources may precede the requested window; an unavailable timestamp stays unknown rather than invented. When it is before the requested `period.end`, coverage must be `partial`; explain the unobserved tail in `coverage.note`, keep the requested window visible and draw no conclusion about events after the cutoff. A cutoff at or beyond the end still does not establish complete capture.
+
 Every factual item requires nonempty source IDs that resolve to the registry. Unknown owners and deadlines remain `null`; known due values are ISO timestamps. Carry material conditions in the text and status so the narration and captions cannot drop them. Review the facts against the sources, then resolve any schema-validation errors before rendering.
 
 Use the brief to make readable scenes rather than turning full chat transcripts into captions. Include the project, cutoff, important status changes and the next unresolved check. Preserve source markers in scene text or credits and retain the full source registry in an accompanying brief. Keep the coverage limitation visible in the video, not solely in the chat reply.
@@ -55,6 +59,10 @@ Use local assets, scripts and fonts for private project content. Do not send the
 ## Apply the supplied Anyx brand
 
 Use the bundled original [Anyx logo](assets/brand/anyx-logo.png) in the artifact header. The helper embeds its unchanged PNG bytes locally, with preserved transparency and proportions. Keep it secondary to project content, usually 56 pixels square; use `object-fit: contain`, without cropping, recoloring, stretching or recreating the mark. Keep status, sources and coverage legible. A native presentation backend should reuse this same supplied asset. Branding is for the requested artifact, not unrelated text replies; it does not authorize sharing or publication.
+
+The helper allocates each scene time from its visible label, headline, captions, brand and footer, using a minimum of four seconds and a heuristic budget of 20 normalized Unicode codepoints per second. It preserves every supplied row, condition, status, deadline, source marker and coverage note. The default total limit is 180 seconds; use `--max-duration-seconds 60` only when the user needs a one-minute composition. If the chosen limit is too short, the helper fails before creating output instead of truncating facts. Review or split the brief with the user if needed. This budget is a pacing aid; it does not establish human readability or replace video inspection.
+
+The bundled MP4 documents an earlier fixed-duration renderer. Rebuilding its brief with the revised text budget changes its duration; the old MP4 is not evidence that this candidate's new timeline has been rendered or visually checked.
 
 ## Verify and deliver the actual output
 

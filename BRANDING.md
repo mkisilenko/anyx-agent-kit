@@ -16,4 +16,4 @@ PNG is packaged as binary without newline normalization. Tests compare decoded o
 
 ## Release boundary
 
-Version `0.1.0-alpha.2` adds branding only. The separately prepared post-review validation and timing fixes are not included. Existing alpha.1 artifacts remain historical unless regenerated and checked. A branded HTML composition is not evidence that a new MP4 was rendered, and neither artifact generation nor logo use authorizes publication or sending.
+Version `0.1.0-alpha.3` preserves the original-logo integration from alpha.2 and adds reviewed validation, timing and print fixes. Logo bytes, portable asset copies and binary packaging stay unchanged. Earlier artifacts remain historical unless regenerated and checked with the current helpers. A branded HTML composition is not evidence that a new MP4 was rendered, and neither artifact generation nor logo use authorizes publication or sending.

@@ -137,46 +137,99 @@ def timestamp(value, field):
 
 
 def validate_brief(data):
-    if data.get("schema_version") != 1 or type(data.get("synthetic")) is not bool:
+    """Validate JSON types and return a normalized brief without mutating input.
+
+    data_as_of is the evidence cutoff, not a promise of capture completeness.
+    A requested window extending beyond that cutoff must be explicitly partial.
+    """
+    def object_value(value, field):
+        if not isinstance(value, dict):
+            raise ValueError(f"{field} must be a JSON object")
+        return value
+
+    def nonempty_text(value, field):
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"{field} must be a nonempty string")
+        return value
+
+    object_value(data, "Brief")
+    normalized = dict(data)
+    if type(data.get("schema_version")) is not int or data["schema_version"] != 1 or type(data.get("synthetic")) is not bool:
         raise ValueError("schema_version=1 and explicit synthetic boolean are required")
     if data.get("language") not in ("en", "he"):
         raise ValueError("language must be en or he")
-    project = data.get("project", {})
-    if not project.get("id") or not isinstance(project.get("title"),str) or not 1<=len(project["title"])<=120:
-        raise ValueError("Project id/title required")
-    period = project.get("period", {})
+    project = object_value(data.get("project"), "project")
+    nonempty_text(project.get("id"), "project.id")
+    title = nonempty_text(project.get("title"), "project.title")
+    if len(title) > 120:
+        raise ValueError("project.title must be 1..120 characters")
+    period = object_value(project.get("period"), "project.period")
     start = timestamp(period.get("start"), "period.start")
     end = timestamp(period.get("end"), "period.end")
-    timestamp(project.get("data_as_of"), "project.data_as_of")
-    if end <= start or not period.get("timezone"):
-        raise ValueError("Positive bounded period and timezone required")
-    coverage = data.get("coverage", {})
-    if coverage.get("status") not in ("partial", "complete_capture_not_asserted") or not coverage.get("note"):
-        raise ValueError("Explicit coverage limitations required")
+    as_of = timestamp(project.get("data_as_of"), "project.data_as_of")
+    nonempty_text(period.get("timezone"), "period.timezone")
+    if end <= start:
+        raise ValueError("Positive bounded period required")
+    if as_of < start:
+        raise ValueError("project.data_as_of cannot precede period.start")
+    coverage = object_value(data.get("coverage"), "coverage")
+    if coverage.get("status") not in ("partial", "complete_capture_not_asserted"):
+        raise ValueError("Explicit coverage status required")
+    nonempty_text(coverage.get("note"), "coverage.note")
+    if as_of < end and coverage["status"] != "partial":
+        raise ValueError("A window beyond project.data_as_of requires coverage.status=partial")
     sources = data.get("sources", [])
-    ids = [s.get("id") for s in sources]
-    if len(ids) != len(set(ids)) or any(not isinstance(i, str) or not re.fullmatch(r"[A-Za-z0-9_-]+", i) for i in ids):
-        raise ValueError("Unique safe source IDs required")
+    if not isinstance(sources, list) or any(not isinstance(s, dict) for s in sources):
+        raise ValueError("sources must be a list of JSON objects")
+    ids = []
     for source in sources:
-        if not source.get("label") or not source.get("system"):
-            raise ValueError("Source system and label required")
-        if source.get("timestamp"):
-            timestamp(source["timestamp"], "source.timestamp")
+        source_id = source.get("id")
+        if not isinstance(source_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]+", source_id):
+            raise ValueError("Unique safe source IDs required")
+        ids.append(source_id)
+        nonempty_text(source.get("label"), "source.label")
+        nonempty_text(source.get("system"), "source.system")
+        for key in ("group_id", "record_id"):
+            if source.get(key) is not None and not isinstance(source[key], str):
+                raise ValueError(f"source.{key} must be a string or null")
+        if source.get("timestamp") is not None:
+            source_time = timestamp(source["timestamp"], "source.timestamp")
+            if source_time > as_of:
+                raise ValueError("source.timestamp cannot follow project.data_as_of")
         validate_source_url(source.get("url"))
+    if len(ids) != len(set(ids)):
+        raise ValueError("Unique safe source IDs required")
+    normalized["sources"] = sources
+    known_ids = set(ids)
     for section in SECTIONS:
         rows = data.get(section, [])
         if not isinstance(rows, list) or len(rows) > 40:
             raise ValueError(f"{section} must be a bounded list, maximum 40")
+        normalized_rows = []
         for item in rows:
-            text = item.get("title" if section == "actions" else "text")
+            object_value(item, f"{section} row")
+            row = dict(item)
+            text = row.get("title" if section == "actions" else "text")
             if not isinstance(text, str) or not text.strip() or len(text) > 280:
                 raise ValueError(f"{section} text must be 1..280 characters")
-            refs = item.get("source_ids", [])
-            if not refs or any(ref not in ids for ref in refs):
-                raise ValueError("Every factual row needs resolvable source_ids")
-            if section == "actions" and item.get("due"):
-                timestamp(item["due"], "action.due")
-    return data
+            refs = row.get("source_ids")
+            if not isinstance(refs, list) or not refs or any(not isinstance(ref, str) or ref not in known_ids for ref in refs):
+                raise ValueError("Every factual row needs a list of resolvable source_ids")
+            if section != "summary":
+                row.setdefault("status", "unknown")
+                nonempty_text(row["status"], f"{section}.status")
+            if section in ("actions", "decisions"):
+                nonempty_text(row.get("id"), f"{section}.id")
+            if section == "actions":
+                row.setdefault("owner", None)
+                row.setdefault("due", None)
+                if row["owner"] is not None:
+                    nonempty_text(row["owner"], "action.owner")
+                if row["due"] is not None:
+                    timestamp(row["due"], "action.due")
+            normalized_rows.append(row)
+        normalized[section] = normalized_rows
+    return normalized
 
 
 def read_brief(path):
@@ -240,3 +293,12 @@ def brand_logo():
     asset = Path(__file__).resolve().parent.parent / "assets" / "brand" / "anyx-logo.png"
     encoded = base64.b64encode(asset.read_bytes()).decode("ascii")
     return f'<img class="brand-logo" src="data:image/png;base64,{encoded}" alt="Anyx" width="56" height="56">'
+
+
+def run_cli(main):
+    """Emit machine-readable local input/file errors instead of a traceback."""
+    try:
+        main()
+    except (ValueError, OSError, RecursionError) as error:
+        print(json.dumps({"valid": False, "errors": [str(error)]}, ensure_ascii=False))
+        raise SystemExit(1) from None

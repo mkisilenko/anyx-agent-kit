@@ -2,11 +2,80 @@
   "artifact_kind": "mp4",
   "rendered": true,
   "verified": true,
-  "duration_seconds": 40.0,
+  "duration_seconds": 124.0,
   "width": 1280,
   "height": 720,
   "audio": "none",
   "source_registry": "brief.json",
+  "reading_budget": {
+    "heuristic": true,
+    "characters_per_second": 20,
+    "minimum_scene_seconds": 4,
+    "maximum_video_seconds": 180,
+    "scope": "Scene label, headline and captions plus repeated visible branding/footer; Unicode code points after whitespace normalization.",
+    "scenes": [
+      {
+        "id": "scene-0",
+        "start_seconds": 0,
+        "duration_seconds": 15,
+        "reading_characters": 287
+      },
+      {
+        "id": "scene-1",
+        "start_seconds": 15,
+        "duration_seconds": 15,
+        "reading_characters": 289
+      },
+      {
+        "id": "scene-2",
+        "start_seconds": 30,
+        "duration_seconds": 14,
+        "reading_characters": 267
+      },
+      {
+        "id": "scene-3",
+        "start_seconds": 44,
+        "duration_seconds": 15,
+        "reading_characters": 292
+      },
+      {
+        "id": "scene-4",
+        "start_seconds": 59,
+        "duration_seconds": 11,
+        "reading_characters": 214
+      },
+      {
+        "id": "scene-5",
+        "start_seconds": 70,
+        "duration_seconds": 15,
+        "reading_characters": 287
+      },
+      {
+        "id": "scene-6",
+        "start_seconds": 85,
+        "duration_seconds": 15,
+        "reading_characters": 289
+      },
+      {
+        "id": "scene-7",
+        "start_seconds": 100,
+        "duration_seconds": 8,
+        "reading_characters": 160
+      },
+      {
+        "id": "scene-8",
+        "start_seconds": 108,
+        "duration_seconds": 8,
+        "reading_characters": 160
+      },
+      {
+        "id": "scene-9",
+        "start_seconds": 116,
+        "duration_seconds": 8,
+        "reading_characters": 160
+      }
+    ]
+  },
   "render_command": [
     "hyperframes",
     "render",

@@ -25,6 +25,10 @@ Create a UTF-8 JSON brief compatible with the bundled `examples/demo-brief.json`
 - `summary`: `{text, source_ids}` objects; `actions`: `{id, title, owner, status, due, source_ids}` objects; `decisions`: `{id, text, status, source_ids}` objects; `risks`: `{text, status, source_ids}` objects.
 - `sources`: unique `{id, system, timestamp, label, url}` records, retaining available `group_id` and `record_id`. A missing URL is `null`; do not fabricate a chat link.
 
+The optional `summary`, `actions`, `decisions`, `risks` and `sources` arrays may be omitted and normalize to empty arrays. Explicit `null`, wrong container types or malformed rows are errors. Omitted action/decision/risk status becomes `unknown`; omitted action owner and due become `null`. These defaults mean unavailable facts, not verified absence.
+
+`project.data_as_of` is the evidence cutoff, not the artifact generation time. All timestamps used for bounds and known due values need an explicit UTC offset. The cutoff must be at or after `period.start`. Known source timestamps must be at or before that cutoff. Older supporting sources may precede the requested window; an unavailable timestamp stays unknown rather than invented. When it is before the requested `period.end`, coverage must be `partial`; explain the unobserved tail in `coverage.note`, keep the requested window visible and draw no conclusion about events after the cutoff. A cutoff at or beyond the end still does not establish complete capture.
+
 All factual items require nonempty, resolvable `source_ids`. Preserve a missing owner or deadline as `null`; known due values use ISO timestamps. Preserve conditions and uncertainty in the item text and status. Validate the evidence mapping as well as the schema. Keep source IDs on the slide content and the full source registry in the deck or its accompanying brief. Keep coverage visible beside any conclusion materially affected by a gap.
 
 ## Produce the requested format

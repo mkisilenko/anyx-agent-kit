@@ -86,6 +86,15 @@ Download a complete skill ZIP or the full kit from the [GitHub releases](https:/
 
 For a first live pilot, use a designated demo group containing synthetic messages. Record the host version, skill revision, tool schema, group scope, time window, and observed result. A local fixture run and a live MCP run have separate evidence records.
 
+
+## Imported toolset compatibility
+
+A legacy import exposing the core status, group-list and message-list tools can support a small bounded read when the required returned fields are complete. Check the tool definitions actually imported by the host: a capability reported by status does not itself import its tool or arguments.
+
+Long-message work may require an updated tool import exposing reference mode and `get_message_content`. Use the host's documented refresh/import procedure when those capabilities are needed. Preserve the already selected account and group scope. Classify a missing imported recovery tool as a compatibility limitation of that connection, with its observed coverage bounds.
+
+Any truncation marker, including `truncated: true`, makes the affected field incomplete even without a large-response error. Recovery requires both an actually exposed tool and a real returned content reference. When either is missing, report partial coverage and avoid conclusions based on the unavailable tail. Do not guess a reference, assume the short text is complete, change accounts or silently reconnect as part of a briefing.
+
 ## Verify the installation
 
 | Check | Passing evidence |
@@ -108,6 +117,6 @@ For a first live pilot, use a designated demo group containing synthetic message
 
 ```text
 python tools/validate_kit.py
-python -m unittest discover -s tests
+python -B -m unittest discover -s tests
 python tools/build_skill_zips.py
 ```

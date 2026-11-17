@@ -2,11 +2,41 @@
 from __future__ import annotations
 import argparse
 import json
+import math
 import os
 from pathlib import Path
 import shutil
 import subprocess
-from brief_support import brand_logo, disclosures, h, item_details, read_brief, ui
+from brief_support import brand_logo, disclosures, h, item_details, read_brief, run_cli, ui
+
+READING_CHARACTERS_PER_SECOND = 20
+MINIMUM_SCENE_SECONDS = 4
+DEFAULT_MAXIMUM_VIDEO_SECONDS = 180
+
+
+def scene_timeline(scenes, persistent_text, max_duration_seconds=DEFAULT_MAXIMUM_VIDEO_SECONDS):
+    """Budget visible text conservatively; this heuristic still needs playback review."""
+    if type(max_duration_seconds) is not int or max_duration_seconds <= 0:
+        raise ValueError("Maximum video duration must be a positive integer number of seconds.")
+    timeline = []
+    start = 0
+    for index, (label, headline, lines) in enumerate(scenes):
+        visible_text = " ".join(" ".join([label, headline, *lines, persistent_text]).split())
+        characters = len(visible_text)
+        duration = max(MINIMUM_SCENE_SECONDS, math.ceil(characters / READING_CHARACTERS_PER_SECOND))
+        timeline.append({
+            "id": f"scene-{index}",
+            "start_seconds": start,
+            "duration_seconds": duration,
+            "reading_characters": characters,
+        })
+        start += duration
+    if start > max_duration_seconds:
+        raise ValueError(
+            f"Video reading budget requires {start} seconds, exceeding the {max_duration_seconds}-second maximum. "
+            "Prepare a shorter reviewed brief without dropping conditions, sources or coverage."
+        )
+    return timeline, start
 
 
 def append_scenes(scenes, label, headline, lines):
@@ -24,7 +54,7 @@ def append_scenes(scenes, label, headline, lines):
     if page:
         scenes.append((label, headline, page))
 
-def build(data, output):
+def build(data, output, max_duration_seconds=DEFAULT_MAXIMUM_VIDEO_SECONDS):
     output=Path(output)
     if output.exists():
         raise ValueError("Choose a new output directory; existing output is not overwritten")
@@ -42,13 +72,13 @@ def build(data, output):
         append_scenes(scenes,ui(data,label),ui(data,label),lines)
     source_lines=[ui(data,"Sources")+" · ["+source["id"]+"]" for source in data["sources"]]
     append_scenes(scenes,ui(data,"Evidence and coverage"),ui(data,"Source registry travels with this video"),[data["coverage"]["note"]]+source_lines)
-    if len(scenes)>15:
-        raise ValueError("Video exceeds 60 seconds. Prepare a shorter reviewed brief without dropping conditions.")
-    duration=len(scenes)*4
+    brand="ANYX AGENT KIT"
+    footer=f'{data["project"]["data_as_of"]} · {ui(data,"Synthetic demo" if data["synthetic"] else "Private snapshot")} · anyx.app'
+    timeline,duration=scene_timeline(scenes,brand+" "+footer,max_duration_seconds)
     output.mkdir(parents=True)
     cards=""
-    for i,(label,headline,lines) in enumerate(scenes):
-        cards+=f'<section class="clip scene" id="scene-{i}" data-start="{i*4}" data-duration="4" data-track-index="{i}"><div class="label">{h(label)}</div><h1>{h(headline)}</h1>'
+    for i,((label,headline,lines),timing) in enumerate(zip(scenes,timeline)):
+        cards+=f'<section class="clip scene" id="{timing["id"]}" data-start="{timing["start_seconds"]}" data-duration="{timing["duration_seconds"]}" data-track-index="{i}"><div class="label">{h(label)}</div><h1>{h(headline)}</h1>'
         cards+="".join(f'<p>{h(line)}</p>' for line in lines)
         cards+="</section>"
     direction="rtl" if data["language"]=="he" else "ltr"
@@ -60,11 +90,15 @@ p{{font-size:28px;line-height:1.35;max-width:1050px;margin:18px 0;overflow-wrap:
 .brand-logo{{display:block;width:56px;height:56px;object-fit:contain;flex-shrink:0}}
 .footer{{position:absolute;bottom:25px;left:86px;right:60px;font-size:16px;color:#bad2c0;z-index:20}}
 </style></head><body><div id="root" data-composition-id="main" data-start="0" data-duration="{duration}" data-width="1280" data-height="720" data-fps="24" data-no-timeline>
-{cards}<div class="brand">{brand_logo()}<span>ANYX AGENT KIT</span></div><div class="footer">{h(data["project"]["data_as_of"])} · {h(ui(data,"Synthetic demo" if data["synthetic"] else "Private snapshot"))} · {h(ui(data,"Captured context, review required"))} · anyx.app</div></div></body></html>"""
+{cards}<div class="brand">{brand_logo()}<span>{h(brand)}</span></div><div class="footer">{h(footer)}</div></div></body></html>"""
     (output/"index.html").write_text(content,encoding="utf-8")
     (output/"brief.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     result={"artifact_kind":"composition","rendered":False,"verified":False,"duration_seconds":duration,
             "width":1280,"height":720,"audio":"none","source_registry":"brief.json",
+            "reading_budget":{"heuristic":True,"characters_per_second":READING_CHARACTERS_PER_SECOND,
+                              "minimum_scene_seconds":MINIMUM_SCENE_SECONDS,"maximum_video_seconds":max_duration_seconds,
+                              "scope":"Scene label, headline and captions plus repeated visible branding/footer; Unicode code points after whitespace normalization.",
+                              "scenes":timeline},
             "render_command":["hyperframes","render",".","--output","project-update.mp4","--fps","24","--quality","draft","--workers","1","--strict","--no-best-effort"]}
     (output/"result.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
     return output,result
@@ -108,20 +142,26 @@ def render_project(output,result,cli,node,runtime_bin=None,browser_path=None):
     (output/"result.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
     return result
 
-if __name__=="__main__":
+def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input",required=True)
     parser.add_argument("--output",required=True,help="New project directory")
+    parser.add_argument("--max-duration-seconds",type=int,default=DEFAULT_MAXIMUM_VIDEO_SECONDS,
+                        help="Maximum permitted duration after text-based timing; default 180 seconds")
     parser.add_argument("--render",action="store_true")
     parser.add_argument("--hyperframes-cli",help="Trusted installed hyperframes/bin/hyperframes.mjs")
     parser.add_argument("--node",default="node")
     parser.add_argument("--runtime-bin",help="Optional directory containing FFmpeg/FFprobe")
     parser.add_argument("--browser-path",help="Optional trusted installed Chrome executable")
     args=parser.parse_args()
-    output,result=build(read_brief(args.input),Path(args.output).resolve())
+    output,result=build(read_brief(args.input),Path(args.output).resolve(),args.max_duration_seconds)
     if args.render:
         if not args.hyperframes_cli:
             parser.error("--render requires --hyperframes-cli")
         result=render_project(output,result,args.hyperframes_cli,args.node,args.runtime_bin,args.browser_path)
     print(json.dumps(result,indent=2))
+
+
+if __name__=="__main__":
+    run_cli(main)
 

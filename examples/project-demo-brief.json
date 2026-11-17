@@ -3,8 +3,8 @@
   "synthetic": true,
   "language": "en",
   "project": {
-    "id": "J42",
-    "title": "Field team project brief",
+    "id": "FIELD-GROUP-WINDOW",
+    "title": "Field group brief: J42 and materials by job",
     "period": {
       "start": "2026-11-17T09:00:00+02:00",
       "end": "2026-11-17T11:00:00+02:00",
@@ -14,7 +14,7 @@
   },
   "coverage": {
     "status": "partial",
-    "note": "Synthetic demonstration. Captured records for the selected two-hour window only. This is a local snapshot."
+    "note": "Captured group records and supplied synthetic records for this two-hour window only. J42 scope and materials for J21, J22 and J25 are separate."
   },
   "summary": [
     {
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "text": "The materials review retains seven F20 pieces and two boxes as separate units.",
+      "text": "Materials by job: J21 four F20 pieces; J22 three F20 pieces; J25 two F20 boxes with pack size unknown.",
       "source_ids": [
         "S2",
         "S4",
@@ -35,7 +35,7 @@
   "actions": [
     {
       "id": "A1",
-      "title": "Obtain the revised signed scope",
+      "title": "J42: obtain the revised signed scope",
       "owner": null,
       "status": "unassigned",
       "due": null,
@@ -46,7 +46,7 @@
     },
     {
       "id": "A2",
-      "title": "Confirm the F20 box size",
+      "title": "J25: confirm the F20 box size",
       "owner": null,
       "status": "proposed",
       "due": null,
@@ -68,7 +68,7 @@
   "decisions": [
     {
       "id": "D1",
-      "text": "The prior conditional approval was withdrawn.",
+      "text": "J42: the prior conditional approval was withdrawn.",
       "status": "withdrawn",
       "source_ids": [
         "S1"
@@ -76,7 +76,7 @@
     },
     {
       "id": "D2",
-      "text": "The increased budget remains a proposal.",
+      "text": "J42: the increased budget remains a proposal.",
       "status": "proposed",
       "source_ids": [
         "S6",
@@ -86,7 +86,7 @@
   ],
   "risks": [
     {
-      "text": "A current owner for the revised scope has not been established.",
+      "text": "J42: a current owner for the revised scope has not been established.",
       "status": "open",
       "source_ids": [
         "S7"

@@ -1,6 +1,6 @@
 """Render an offline HTML slide deck. This helper does not create a PPTX."""
 import argparse
-from brief_support import brand_logo, disclosures, h, item_details, read_brief, save_text, source_markup, source_registry, ui
+from brief_support import brand_logo, disclosures, h, item_details, read_brief, run_cli, save_text, source_markup, source_registry, ui
 
 def render(data):
     project=data["project"]
@@ -41,14 +41,18 @@ def render(data):
 .intro{{font-size:34px;color:#b1f5bc}}.entry{{border-top:1px solid #4c6953;margin-top:23px;padding-top:12px}}p{{max-width:1050px;margin:14px 0}}
 small{{font-size:18px;color:#bed1c0}}.source{{font-size:22px;overflow-wrap:anywhere}}a{{color:#b1f5bc}}footer{{position:absolute;bottom:24px;font-size:14px;color:#bed1c0}}
 nav{{display:flex;justify-content:center;align-items:center;gap:18px;padding:16px}}button{{font:18px system-ui;padding:9px 18px;background:#b1f5bc;border:0;border-radius:6px;cursor:pointer}}
-@media(max-width:800px){{.brand{{top:12px;left:24px}}.slide{{padding:82px 24px 80px;min-height:100vh}}h1{{font-size:36px}}body{{font-size:21px}}}}
-@media print{{@page{{size:16in 9in;margin:0}}nav{{display:none}}.slide,.slide[hidden]{{display:block!important;break-after:page;width:1280px;height:720px;margin:0}}}}
+@media screen and (max-width:800px){{.brand{{top:12px;left:24px}}.slide{{padding:82px 24px 80px;min-height:100vh}}h1{{font-size:36px}}body{{font-size:21px}}}}
+@media print{{@page{{size:1280px 720px;margin:0}}nav{{display:none}}.brand{{top:20px;left:72px}}.slide,.slide[hidden]{{display:block!important;break-after:page;width:1280px;height:720px;max-width:none;min-height:0;margin:0}}.slide:last-of-type{{break-after:auto}}}}
 </style><div class="brand">{brand_logo()}<span>ANYX AGENT KIT</span></div>{sections}<nav aria-label="{h(ui(data,"Slide navigation"))}"><button id="previous">{h(ui(data,"Previous"))}</button><span id="page"></span><button id="next">{h(ui(data,"Next"))}</button></nav>{source_registry(data)}<script>{script}</script></html>"""
 
-if __name__=="__main__":
+def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input",required=True)
     parser.add_argument("--output",required=True)
     args=parser.parse_args()
     print(save_text(args.output,render(read_brief(args.input))))
+
+
+if __name__=="__main__":
+    run_cli(main)
 

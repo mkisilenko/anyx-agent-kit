@@ -25,6 +25,10 @@ Prepare a UTF-8 JSON brief using the bundled `examples/demo-brief.json` as a for
 - `summary`: objects with `text` and `source_ids`; `actions`: objects with `id`, `title`, `owner`, `status`, `due`, `source_ids`; `decisions`: objects with `id`, `text`, `status`, `source_ids`; `risks`: objects with `text`, `status`, `source_ids`.
 - `sources`: objects with unique `id`, `system`, `timestamp`, `label`, `url`, and available `group_id` and `record_id`. Use an actual returned source URL or `null`, not a fabricated permalink. Preserve stored-record identities in this registry.
 
+The optional `summary`, `actions`, `decisions`, `risks` and `sources` arrays may be omitted and normalize to empty arrays. Explicit `null`, wrong container types or malformed rows are errors. Omitted action/decision/risk status becomes `unknown`; omitted action owner and due become `null`. These defaults mean unavailable facts, not verified absence.
+
+`project.data_as_of` is the evidence cutoff, not the artifact generation time. All timestamps used for bounds and known due values need an explicit UTC offset. The cutoff must be at or after `period.start`. Known source timestamps must be at or before that cutoff. Older supporting sources may precede the requested window; an unavailable timestamp stays unknown rather than invented. When it is before the requested `period.end`, coverage must be `partial`; explain the unobserved tail in `coverage.note`, keep the requested window visible and draw no conclusion about events after the cutoff. A cutoff at or beyond the end still does not establish complete capture.
+
 Every factual summary, action, decision and risk needs nonempty `source_ids` resolving to the registry. Keep `owner` and `due` as `null` when absent; a known due value is an ISO timestamp. Preserve uncertainty in text and status. If the contract cannot represent an essential qualification, retain it in the item's text instead of silently flattening it. Check citations and status against the read evidence before rendering; schema validation alone cannot establish accuracy.
 
 ## Render and inspect
