@@ -1,12 +1,12 @@
 # Validation evidence
 
-**TLDR:** Alpha.3 passes 69 local tests and eight portable skill checks. A fresh 124-second MP4 uses the revised text timeline, original logo and clarified synthetic group scope; ten scene-midpoint frames were inspected. Real Chrome checks cover PDF geometry and desktop/mobile artifacts. An authorized text-read pilot is verified on one existing host, with details private; live chunk recovery, clean installation and destination writes remain untested.
+**TLDR:** Alpha.3 passes 69 local tests and eight portable skill checks. Fresh project installation invokes all eight skills in Claude Code 2.1.319 on an existing Windows machine. Five selected local HTTP integration tests verify large Unicode recovery on pinned backend source. Native live text reads, artifact rendering and hosted long-text recovery are separate evidence scopes below.
 
 Reviewed on 17 November 2026, Asia/Jerusalem. All shipped conversations, projects, external records and media demos are synthetic. Separate live-read evidence is summarized below without group identities or customer content.
 
 
 
-Alpha.3 is prepared locally; the current public release is alpha.2. These checks do not establish publication of the prepared revision.
+The owner authorized alpha.3 publication and public-beta preparation. Source checks establish the candidate's behavior; actual tag, CI and download availability are recorded by the [GitHub release](https://github.com/mkisilenko/anyx-agent-kit/releases/tag/v0.1.0-alpha.3) and shared execution record.
 
 ## Current alpha.3 integration checks
 
@@ -28,7 +28,7 @@ This local revision integrates the independent review fixes onto branded source 
 
 The shipped demonstration is a synthetic group briefing: J42 decisions and scope are separate from J21/J22/J25 materials. Its three portable skill copies share that clarified example. Independent replay fixtures retain their separate scenario contexts. No live group identity, customer content, credentials or private pilot result was copied into public code or examples.
 
-These automated and rendering checks are local. The browser check explicitly skips on a machine without its existing Node/Chrome/puppeteer-core/pypdf dependencies; it actually executed in this run. The pacing budget aids review and does not prove human reading speed. Sampling ten video frames is narrower than checking every frame. The local validator cannot establish live access, fresh remote state or write authority. The separately observed text-read pilot below covers one existing host; clean-host discovery, live chunk recovery and destination writes remain untested.
+These automated and rendering checks are local. The browser check explicitly skips on a machine without its existing Node/Chrome/puppeteer-core/pypdf dependencies; it actually executed in this run. The pacing budget aids review and does not prove human reading speed. Sampling ten video frames is narrower than checking every frame. The local validator cannot establish live access, fresh remote state or write authority. Fresh project discovery and local long-text transport have separate evidence below; authenticated MCP in that fresh CLI, hosted chunk recovery and destination writes remain open.
 
 
 ## Scoped live-read evidence
@@ -36,6 +36,22 @@ These automated and rendering checks are local. The browser check explicitly ski
 A bounded live read of synthetic messages passed through the core tools. A separate legacy long-text attempt returned a truncation marker without an available imported recovery tool/reference, so that field remained incomplete and coverage stayed partial.
 
 An authorized text-read pilot was also verified on one existing host: frozen pagination, reverse rescan, direct lookup and search were checked for consistency over the retrieved records. Text was inline, so long-text chunk recovery was not exercised. Private sourced dashboard, deck and video artifacts were produced and inspected. Their records and artifacts are kept private and were not copied into the public examples. These checks do not establish complete WhatsApp capture, compatibility with every host, clean installation or destination writes.
+
+## Fresh project installation
+
+A new temporary Windows project received all eight alpha.3 skill ZIPs, with every extracted file compared against its archive. Claude Code 2.1.319 discovered and actually invoked all eight skills from those new `.claude/skills` paths. Nine referenced files were read. Three rendering skills invoked their installed helpers in four actual commands, including a saved dashboard request repeated with byte-identical output. The three HTML artifacts embedded the original PNG bytes. The installed video helper produced an explicitly unrendered 124-second composition; the separately rendered MP4 evidence above remains distinct.
+
+The supported run used `--setting-sources project`, the existing CLI binary and subscription authentication. Existing managed settings and personal registry were present, but invocation base paths identified the new project copies. No personal skill installation was overwritten or credential copied. This proves a fresh project installation on the existing machine, not a fresh OS, account or every client. The `--restricted` diagnostic did not register project skills on that version and was not the passing route.
+
+A separate project-scoped Anyx OAuth connection was prepared for an authenticated run in the same fresh CLI. The user approved the project server, but the actual authorization request failed with `invalid_request`: its loopback redirect contained a callback port and Anyx rejected it as not matching the registered redirect URI. An anonymous validation probe accepted a portless localhost callback and rejected the observed callback with a port. Claude Code 2.1.319 kept an explicit `:80` when configured with callbackPort 80, and that form was also rejected. The client-only fixed-port attempt therefore did not resolve authentication. No consent, token, hosted long-text result or backend change is claimed. The [official Claude MCP authentication guide](https://code.claude.com/docs/en/mcp#authenticate-with-remote-mcp-servers) describes the normal flow; existing-host native access does not authenticate this new client automatically.
+
+## Local long-text integration
+
+Five selected integration tests passed over actual loopback HTTP MCP, REST and SQL using isolated synthetic data and PGlite 0.5.8. Backend source was pinned to `ff9047892982951e5e891c22386d492b80170e3c`; it is separate from the kit release revision and is not asserted to be the hosted version. Remote network access was blocked and no real credentials were supplied. Fifteen unrelated tests in that backend suite were intentionally unselected, not extra passes.
+
+The checks reconstruct mixed Hebrew, emoji and CJK text from hundreds of kilobytes to over two megabytes, compare complete text and hashes, recover after an oversized-response error, exercise direct-lookup references, and reject altered references, cross-credential use, expired snapshots and changed source text. References are issued only for fields larger than 16,384 UTF-8 bytes; there is no force-reference argument.
+
+The currently authorized native live group returned only inline text. Its completed read cannot prove a successful hosted chunk call. A legacy Reviewer connection still imports only the core tools and its truncated field remains incomplete. Hosted long-text recovery requires the modern Reviewer connection, an actual returned reference and the same credential throughout.
 
 ## Historical test scopes
 
@@ -93,7 +109,7 @@ The five cases used 26 simulated Anyx calls. No live Anyx account or customer re
 
 ## Remaining verification
 
-- Clean-host skill discovery and coverage of additional hosts/accounts. Existing-host text reads are verified within the scope above; live long-text chunk recovery is not yet tested.
+- Authenticated MCP in the fresh CLI, hosted long-text chunk recovery and coverage of additional hosts/accounts. Fresh project discovery and local helper invocation are verified on the existing Windows machine; live native reads and local long-text transport have the separate scopes above.
 - Actual destination connections. The 15 systems in systems-compatibility.md are API/mapping candidates, not fifteen implemented authenticated integrations.
 - Native presentation formats. The portable helper creates HTML slides; other formats require a real host backend.
 - Fresh remote versions and user authority. The sync helper validates plan structure and performs no remote writes.

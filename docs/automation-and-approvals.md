@@ -23,6 +23,7 @@ These local steps are covered by package preparation. They do not need repeated 
 | --- | --- |
 | Create the remote repository | The user selected mkisilenko/anyx-agent-kit as the public destination on 17 November 2026. Verify actual account access and the final candidate before creation. |
 | Publish the initial GitHub alpha | Covered by the user's open source request and explicit selection of public mkisilenko/anyx-agent-kit. Validate the final revision and assets, use existing account access, and verify the public outcome. |
+| Publish alpha.3 and prepare the public beta | Explicitly authorized in this chat on 17 November 2026. Complete the relevant checks, publish the reviewed alpha.3 revision with existing GitHub access and verify its downloads. Do not request the same release decision again. Broader channel publication and production auth changes have separate scope. |
 | Push a branch or open a PR | Authorization for the selected remote and candidate. Include the exact revision and validation evidence. |
 | Merge or publish a release | Approval covering the reviewed final revision and release artifacts. |
 | Enable repository CI | Initial package includes synthetic validation on pull requests, main pushes and manual dispatch with contents:read. The source drift check is manual-only. No secret or paid runner is required. |
@@ -71,7 +72,7 @@ Repository visibility, release availability, indexing, traffic, and independent 
 
 The [systems matrix](systems-compatibility.md) maps fifteen candidate CRM, project, and service systems from official documentation. These rows are engineering guidance. Runtime support depends on the destination connectors actually available to the host and their current schemas.
 
-The [launch plan](launch-plan.md) stages the MIT release, installation page, technical walkthrough, and social copy for existing owners. The user authorized the initial public GitHub alpha under mkisilenko/anyx-agent-kit. A broader customer launch follows clean-host discovery and a scoped synthetic live pilot. Keep recurring package preparation within the current pilot and preserve the existing directory queue.
+The [launch plan](launch-plan.md) stages the MIT release, installation page, technical walkthrough, and social copy for existing owners. The user authorized the initial public GitHub alpha and then alpha.3 publication with public-beta preparation. A broader customer launch follows the installation and scoped live pilot gates. Keep recurring package preparation within the current pilot and preserve the existing directory queue.
 
 ## Concrete maintenance loop
 

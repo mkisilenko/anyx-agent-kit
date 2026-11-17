@@ -2,11 +2,11 @@
 
 <img src="assets/brand/anyx-logo.png" width="96" height="96" alt="Anyx logo">
 
-**TLDR:** Eight MIT-licensed skills turn authorized WhatsApp group context into briefings, reviews, project artifacts, and controlled workspace changes. This is an alpha toolkit. Local rendering and an authorized text-read pilot on one existing host are verified; clean installation and destination writes remain untested. Connect an eligible Anyx account and install the skills before trying a scoped workflow.
+**TLDR:** Eight MIT-licensed skills turn authorized WhatsApp group context into briefings, reviews, project artifacts, and controlled workspace changes. Fresh project installation and local rendering are verified in Claude Code 2.1.319 on an existing Windows machine. Live text reads and local long-text transport have separate evidence. Connect an eligible Anyx account before trying a scoped workflow.
 
 [Anyx](https://anyx.app) connects the group context to a compatible agent through its authenticated MCP service. The kit adds workflow instructions and synthetic examples. The existing [Anyx documentation repository](https://github.com/mkisilenko/docs) remains the canonical source for connection and tool documentation.
 
-Version `0.1.0-alpha.3` is prepared locally and integrates reviewed input-validation, authorization-reference, evidence-cutoff, independent-batch, print-geometry and video-pacing fixes while preserving the original [Anyx brand](BRANDING.md). The video helper uses text-based scene timing with a configurable 180-second default limit; it preserves conditions and rejects an insufficient explicit limit instead of truncating facts. See [validation evidence](docs/validation.md) for current checks and the separate history of earlier renders.
+Version `0.1.0-alpha.3` integrates reviewed input-validation, authorization-reference, evidence-cutoff, independent-batch, print-geometry and video-pacing fixes while preserving the original [Anyx brand](BRANDING.md). The video helper uses text-based scene timing with a configurable 180-second default limit; it preserves conditions and rejects an insufficient explicit limit instead of truncating facts. See [validation evidence](docs/validation.md) for the exact checks and [the public-beta guide](docs/public-beta.md) for two practical first requests.
 
 ## Choose a workflow
 
@@ -91,13 +91,14 @@ These checks validate package structure, fixtures, and build behavior. Record th
 | Readiness stage | Current evidence |
 | --- | --- |
 | Locally validated | All 8 portable skills and 69 local tests passed, including actual Chrome/PDF geometry and forced-hang cleanup. Fresh alpha.3 dashboard/deck and a 124-second local MP4 were inspected. Earlier independent synthetic workflow cases remain separately documented. See [validation](docs/validation.md). |
-| Clean host installed | Unverified. Record host version, installed skill, and discovery result. |
-| Live MCP read pilots | A bounded synthetic read passed. A separate authorized text-read pilot was verified on one existing host, with details private. A legacy long-text read remained partial; live chunk recovery was not exercised. Clean installation and destination writes remain untested. |
-| Public repository and release | [mkisilenko/anyx-agent-kit](https://github.com/mkisilenko/anyx-agent-kit) is public with MIT and the alpha.2 release. Alpha.3 is prepared locally and remains unpublished. |
+| Fresh project installed | Verified in Claude Code 2.1.319 on an existing Windows machine: all 8 skills discovered and invoked from newly extracted project paths, referenced files loaded, local helpers run and a saved dashboard request repeated. Existing binary/subscription authentication was reused; this was not a new OS installation. |
+| Live MCP read pilots | A bounded synthetic read passed. A separate authorized text-read pilot was verified on one existing host, with details private. A legacy long-text read remained partial; live chunk recovery and authenticated MCP in the fresh CLI still need separate evidence. Destination writes remain untested. |
+| Long-text transport | Five selected local HTTP MCP/REST/SQL integration tests passed on the separately pinned backend source, including large Unicode reconstruction and reference guards. Hosted long-text recovery and authenticated MCP in the fresh CLI still need their own evidence. |
+| Public repository and release | [mkisilenko/anyx-agent-kit](https://github.com/mkisilenko/anyx-agent-kit) is public with MIT. Use the [alpha.3 release](https://github.com/mkisilenko/anyx-agent-kit/releases/tag/v0.1.0-alpha.3) for its actual tag, source revision and download manifest. |
 | Traffic and citations | Unmeasured. Record visits, useful usage, and independent references separately. |
 
 ## Release handoff
 
-The user selected the public mkisilenko/anyx-agent-kit repository and MIT. The alpha ships with explicit offline/live readiness boundaries. Broader website, blog and social promotion should follow a clean-host installation and an authorized synthetic live pilot, using the existing publication owners.
+The owner authorized alpha.3 publication and public-beta preparation. The alpha ships with explicit installation, local transport and hosted-read boundaries. The beta guide uses alpha.3 as its download artifact, with no separate beta-version tag implied. Broader website, blog and social promotion follows the [staged launch plan](docs/launch-plan.md), using the existing publication owners.
 
 Follow [automation and approvals](docs/automation-and-approvals.md) for the existing bounded pilot, account setup, and publication gates. The [launch plan](docs/launch-plan.md) includes staged release copy and handoffs to the existing site, blog, and social owners.

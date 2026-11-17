@@ -6,9 +6,9 @@
 
 The eight-skill MIT kit uses the existing Anyx MCP service. The [Anyx documentation repository](https://github.com/mkisilenko/docs), [MCP quickstart](https://docs.anyx.app/developers/mcp-quickstart) and [tool reference](https://docs.anyx.app/developers/mcp-tools) remain the connection and API sources.
 
-An authorized live text-read pilot completed on one existing host, with outputs retained privately. This does not establish clean-host installation, support across clients or external destination writes. Private content, identities and outputs are excluded from public launch assets.
+An authorized live text-read pilot completed on one existing host, with outputs retained privately. Separately, all eight skills were installed and invoked in a fresh Claude Code 2.1.319 project on the existing Windows machine. Five local HTTP integration tests exercised large Unicode recovery on pinned backend source. Authentication in that fresh CLI, hosted long-text recovery, support across clients and external destination writes retain their separate gates. Private content, identities and outputs are excluded from public launch assets.
 
-Version `0.1.0-alpha.3` is locally prepared pending final review and matching release scope. Do not describe it as published. Record its final revision, checks, package hashes and observed release availability separately. Public alpha availability and a broader customer launch are separate outcomes.
+The owner authorized publication of `0.1.0-alpha.3` and preparation of the public beta in the chat on 17 November 2026. Complete the reviewed release within that scope and record its final revision, checks, package hashes and observed availability. Publication is not established until those checks succeed. The [public-beta guide](public-beta.md) uses alpha.3 as its download artifact and keeps release, participant activity and broader promotion separate.
 
 ## Two practical starting uses
 
@@ -51,7 +51,7 @@ Live-demo wording must name the tested host and scope. The [systems matrix](syst
 | **Derivative 2** | One existing EN or HE social message with the reviewed visual or video and guide link. | Existing social owner selects the slot. | Public post URL after publication, correct demo label and available attribution. A separate language or video post is another derivative. |
 | **Derivative 3** | Unallocated. | Existing content coordinator retains the slot. | No additional asset, outreach or schedule created by this plan. |
 
-If the launch week's allocation is occupied, reuse that allocation or hold this item. Owners share the same cap. Reuse the existing deck, dashboard, video, visual and EN/HE drafts; no new marketing pack is requested.
+If the launch week's allocation is occupied, reuse that allocation or hold this item. Owners share the same cap. The [public-beta owner handoff](../marketing/public-beta/README.md) adapts the existing deck, dashboard, video, visual and EN/HE drafts. It adds no new article, generated media, publication or schedule.
 
 Near one click repeat use follows account eligibility, connected groups, authenticated compatible MCP support, installed skills and initial group/time choice. Rendering and destination changes require their actual available tools. Keep these prerequisites near the relevant CTA.
 
@@ -71,8 +71,8 @@ Carry existing scoped authorization forward for routine work it covers. Resolve 
 
 ## בקצרה בעברית
 
-1. **פיילוט סגור:** התקנה נקייה במארח אחד, שני שימושים ברורים ומקורות שנבדקו. הקריאה החיה במארח הקיים הושלמה; התקנה נקייה וכתיבה למערכת אחרת עדיין פתוחות.
+1. **פיילוט סגור:** שמונת הסקילים הותקנו והופעלו בפרויקט Claude Code חדש במחשב הקיים. הקריאה החיה במארח הקודם ובדיקות תעבורה מקומיות עברו בנפרד. חיבור MCP מאומת בפרויקט החדש, שליפה ארוכה מהשרת החי וכתיבה למערכת אחרת עדיין פתוחים.
 2. **פתיחה מוגבלת:** 3–5 משתמשים. יעד מוצע: שלוש הפעלות ראשונות מועילות, עד עזרה נקודתית אחת לכל משתמש, ושני משתמשים חוזרים בתוך שבעה ימים. מציגים את מספר המתחילים בפועל.
 3. **השקה ציבורית:** המאמר הקיים כמקור, מקטע האתר והודעה חברתית כשני נגזרים. המקום השלישי פנוי. טעות מהותית או חסם התקנה חוזר עוצרים הרחבה; 20 מבקרים מדודים ללא הפעלה מאומתת מחייבים בדיקת המשפך.
 
-alpha.3 מוכנה מקומית לביקורת סופית ולהיקף שחרור מתאים. אין כאן טענה שפורסמה, ואין לפרסם תוכן מהפיילוט הפרטי.
+פרסום alpha.3 והכנת הבטא הציבורית אושרו בצ׳אט ב־17 בנובמבר 2026. מצב הפרסום נשען על אימות הגרסה וההורדות בפועל. [מדריך הבטא](public-beta.md) מרכז התקנה, בקשות פתיחה ומשוב. אין לפרסם תוכן מהפיילוט הפרטי.

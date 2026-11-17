@@ -74,7 +74,7 @@ foreach ($skillName in $skillNames) {
 
 Confirm discovery in the host. In Codex CLI or the IDE, select a skill through `/skills` or a `$` mention. Claude Code documents invocation as `/skill-name`. Use the host's reload or new session procedure if the skill does not appear.
 
-Download a complete skill ZIP or the full kit from the [GitHub releases](https://github.com/mkisilenko/anyx-agent-kit/releases), or clone [mkisilenko/anyx-agent-kit](https://github.com/mkisilenko/anyx-agent-kit) and use the folders above. Check the release manifest before installing. The documented folder routes still need clean-host discovery verification. An authorized text-read pilot passed on one existing host, as summarized in [validation evidence](validation.md); it does not cover every import or live long-text chunk recovery.
+Download a complete skill ZIP or the full kit from the [GitHub releases](https://github.com/mkisilenko/anyx-agent-kit/releases), or clone [mkisilenko/anyx-agent-kit](https://github.com/mkisilenko/anyx-agent-kit) and use the folders above. Check the release manifest before installing. A fresh project installation was verified in Claude Code 2.1.319 on an existing Windows machine: all eight skills were invoked from the newly extracted project folders, references loaded, and installed helpers produced synthetic artifacts. The run used project settings with the existing binary and subscription authentication. On that version, `--restricted` omitted project skills in the diagnostic run. This installation proof is separate from MCP authentication and hosted long-text recovery. See [validation evidence](validation.md).
 
 ## Connect and scope Anyx
 
