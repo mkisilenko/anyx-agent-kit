@@ -74,7 +74,7 @@ foreach ($skillName in $skillNames) {
 
 Confirm discovery in the host. In Codex CLI or the IDE, select a skill through `/skills` or a `$` mention. Claude Code documents invocation as `/skill-name`. Use the host's reload or new session procedure if the skill does not appear.
 
-The package has no published repository installation target yet. A future release should replace this local handoff with its actual approved release URL and verified installation route.
+Download a complete skill ZIP or the full kit from the [GitHub releases](https://github.com/mkisilenko/anyx-agent-kit/releases), or clone [mkisilenko/anyx-agent-kit](https://github.com/mkisilenko/anyx-agent-kit) and use the folders above. Check the release manifest before installing. The documented folder routes still need clean-host discovery and live MCP verification for this alpha.
 
 ## Connect and scope Anyx
 
